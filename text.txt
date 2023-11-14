@@ -1,0 +1,136 @@
+npx sequelize-cli model:generate --name User --attributes username:string,email:string,password:string,role:string
+
+npx sequelize-cli model:generate --name Comment --attributes comment:string,deviceId:string,userId:integer
+
+npx sequelize-cli model:generate --name Like --attributes likeCount:integer,deviceId:string,userId:integer
+
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjk5OTU0OTkxfQ._bfLFlacj1pGjxr0H23JvLmAIEYfB62BaXTCOlsm1IM
+
+
+[
+  {
+    "id": "acer-phones-59",
+    "name": "Acer",
+    "devices": 100
+  },
+  {
+    "id": "apple-phones-48",
+    "name": "Apple",
+    "devices": 118
+  },
+  {
+    "id": "asus-phones-46",
+    "name": "Asus",
+    "devices": 200
+  },
+  {
+    "id": "blackberry-phones-36",
+    "name": "BlackBerry",
+    "devices": 92
+  },
+  {
+    "id": "coolpad-phones-105",
+    "name": "Coolpad",
+    "devices": 44
+  },
+  {
+    "id": "google-phones-107",
+    "name": "Google",
+    "devices": 27
+  },
+  {
+    "id": "honor-phones-121",
+    "name": "Honor",
+    "devices": 194
+  },
+  {
+    "id": "hp-phones-41",
+    "name": "HP",
+    "devices": 41
+  },
+  {
+    "id": "htc-phones-45",
+    "name": "HTC",
+    "devices": 287
+  },
+  {
+    "id": "huawei-phones-58",
+    "name": "Huawei",
+    "devices": 436
+  },
+  {
+    "id": "lenovo-phones-73",
+    "name": "Lenovo",
+    "devices": 245
+  },
+  {
+    "id": "meizu-phones-74",
+    "name": "Meizu",
+    "devices": 71
+  },
+  {
+    "id": "nokia-phones-1",
+    "name": "Nokia",
+    "devices": 576
+  },
+  {
+    "id": "nothing-phones-128",
+    "name": "Nothing",
+    "devices": 2
+  },
+  {
+    "id": "oneplus-phones-95",
+    "name": "OnePlus",
+    "devices": 62
+  },
+  {
+    "id": "oppo-phones-82",
+    "name": "Oppo",
+    "devices": 285
+  },
+  {
+    "id": "razer-phones-117",
+    "name": "Razer",
+    "devices": 2
+  },
+  {
+    "id": "realme-phones-118",
+    "name": "Realme",
+    "devices": 178
+  },
+  {
+    "id": "samsung-phones-9",
+    "name": "Samsung",
+    "devices": 1376
+  },
+  {
+    "id": "sharp-phones-23",
+    "name": "Sharp",
+    "devices": 72
+  },
+  {
+    "id": "sony-phones-7",
+    "name": "Sony",
+    "devices": 158
+  },
+  {
+    "id": "sony_ericsson-phones-19",
+    "name": "Sony Ericsson",
+    "devices": 188
+  },
+  {
+    "id": "vivo-phones-98",
+    "name": "vivo",
+    "devices": 401
+  },
+  {
+    "id": "xiaomi-phones-80",
+    "name": "Xiaomi",
+    "devices": 362
+  },
+  {
+    "id": "zte-phones-62",
+    "name": "ZTE",
+    "devices": 364
+  }
+]
