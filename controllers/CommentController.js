@@ -1,24 +1,24 @@
-const gsmarena = require('gsmarena-api');
-const { User, Comment } = require('../models')
+const { Comment } = require('../models')
 
 class CommentController {
     static async addComment(req, res, next) {
         try {
             const { comment } = req.body
             const { id } = req.params
-            
-            const user = await User.findByPk(id)
-            const devices = await gsmarena.catalog.getBrand(id);
 
+            const userId = req.user.id
+      
             const addComment = await Comment.create({
                 comment: comment,
-                deviceId: devices,
-                userId: user
+                deviceId: id,
+                userId: userId
             })
             res.status(200).json(addComment)
         } catch (error) {
             next(error)
         }
     }
+
+    static
 }
 module.exports = CommentController

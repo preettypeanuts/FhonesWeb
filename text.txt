@@ -4,6 +4,8 @@ npx sequelize-cli model:generate --name Comment --attributes comment:string,devi
 
 npx sequelize-cli model:generate --name Like --attributes likeCount:integer,deviceId:string,userId:integer
 
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjk5OTU0OTkxfQ._bfLFlacj1pGjxr0H23JvLmAIEYfB62BaXTCOlsm1IM
+
 
 [
   {
