@@ -12,14 +12,8 @@ module.exports = {
       comment: {
         type: Sequelize.STRING
       },
-      articleId: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'Articles',
-          key: 'id'
-        },
-        onUpdate: 'cascade',
-        onDelete: 'cascade'
+      deviceId: {
+        type: Sequelize.STRING
       },
       userId: {
         type: Sequelize.INTEGER,

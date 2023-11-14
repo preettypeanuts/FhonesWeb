@@ -1,0 +1,6 @@
+npx sequelize-cli model:generate --name User --attributes username:string,email:string,password:string,role:string
+
+npx sequelize-cli model:generate --name Comment --attributes comment:string,deviceId:string,userId:integer
+
+npx sequelize-cli model:generate --name Like --attributes likeCount:integer,deviceId:string,userId:integer
+
