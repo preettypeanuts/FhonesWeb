@@ -1,4 +1,5 @@
 const errorHandler = (error, req, res, next) => {
+    console.log(error);
     switch (error.name) {
         case "SequelizeValidationError":
         case "SequelizeUniqueConstraintError":
@@ -10,6 +11,15 @@ const errorHandler = (error, req, res, next) => {
             break;
         case "Forbidden":
             res.status(403).json({ message: 'Forbidden Access' })
+            break;
+        case "InvalidInput":
+            res.status(400).json({ message: `please fill email and password` })
+            break;
+        case "PostNotFound":
+            res.status(401).json({ message: `No matches post!` })
+            break;
+        case "Unauntenticated":
+            res.status(401).json({ message: `email or password unregistered` })
             break;
         default:
             console.log(error);

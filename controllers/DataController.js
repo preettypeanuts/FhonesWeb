@@ -1,33 +1,42 @@
 const gsmarena = require('gsmarena-api');
-const { Op } = require("sequelize");
-const { search } = require('../app');
 
 class DataController {
-    static async brandData(req, res, next) {
+    static async allBrands(req, res, next) {
         try {
             const brands = await gsmarena.catalog.getBrands();
             res.status(200).json(brands)
         } catch (error) {
-            res.status(500),json({message: "Internal Server Error"})
-            console.log(error);
+            next(error)
         }
     }
-    static async brandList(req, res, next) {
+    static async brandProductList(req, res, next) {
         try {
-            const brandList = await gsmarena.catalog.getBrand('apple-phones-48');
-            res.status(200).json(brandList)
+            const { id } = req.params
+            console.log(id);
+            const devices = await gsmarena.catalog.getBrand(id);
+            res.status(200).json(devices)
         } catch (error) {
-            res.status(500).json({message: "Internal Server Error"})
-            console.log(error);
+            next(error)
         }
     }
     static async deviceDetail(req, res, next) {
         try {
-            const deviceDetail = await gsmarena.catalog.getDevice('apple_iphone_13_pro_max-11089');
+            const { id } = req.params
+            console.log(id);
+            const deviceDetail = await gsmarena.catalog.getDevice(id);
             res.status(200).json(deviceDetail)
         } catch (error) {
-            res.status(500).json({message: "Internal Server Error"})
-            console.log(error);
+            next(error)
+        }
+    }
+    static async searchDevice(req, res, next) {
+        try {
+            const { id } = req.params
+            console.log(id);
+            const devices = await gsmarena.search.search(id);
+            res.status(200).json(devices)
+        } catch (error) {
+            next(error)
         }
     }
 }
