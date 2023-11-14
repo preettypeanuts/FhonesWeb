@@ -7,7 +7,7 @@ class CommentController {
             const { id } = req.params
 
             const userId = req.user.id
-      
+
             const addComment = await Comment.create({
                 comment: comment,
                 deviceId: id,
@@ -19,6 +19,18 @@ class CommentController {
         }
     }
 
-    static
+    static async deleteComment(req, res, next) {
+        try {
+            const { id } = req.params
+            await Comment.destroy({
+                where: {
+                    deviceId: id
+                }
+            })
+            res.status(200).json({ message: `comment deleted` })
+        } catch (error) {
+            next(error)
+        }
+    }
 }
 module.exports = CommentController

@@ -28,10 +28,12 @@ router.use(authentication)
 router.post('/register', UserController.register)
 
 // Likes
-router.patch('/devices/:id/likes', LikeController.increaseLike)
+router.post('/devices/:id/likes', LikeController.increaseLike)
+router.delete('/devices/:id/likes', LikeController.decreaseLike)
 
 //Comments
 router.post('/devices/:id/comments', CommentController.addComment)
+router.delete('/devices/:id/comments', CommentController.deleteComment)
 
 
 
