@@ -4,12 +4,12 @@ export const Banner = () => {
       <section className="banner">
         <div className="teksOverlay">
           <p className="display-6">Fhones.com</p>
-          <h1 className="display-1 bold text-white-100">
+          <h1 className="display-1 bold text-dark-100">
             Find your
-            <span className="gradient-text">Best Gadget</span>
+            <span className="gradient-text"> Best Gadget </span>
             Here
           </h1>
-          <p className="text-white-50">
+          <p className="text-dark-50">
             Explore cutting-edge gadgets designed to elevate your digital
             lifestyle. From top-tier smartphones to the latest in smart tech,
             discover innovation for the modern era.

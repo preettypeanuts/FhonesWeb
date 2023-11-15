@@ -18,7 +18,7 @@ export const CategoryPhoneModel = () => {
               />
               Xiaomi
             </div>
-            <div className="vh-50 oneTiles customBtn text-white">
+            <div className="vh-50 oneTiles customBtn text-black">
               <box-icon name="bolt-circle" type="solid" color="#ffffff" />
               Samsung
             </div>
@@ -144,7 +144,7 @@ export const CategoryPhoneModel = () => {
       {/* Image */}
       <section
         className="vh-50 imageContainer"
-        style={{ backgroundColor: "#000000" }}
+        style={{ backgroundColor: "#ffffff" }}
       >
         <hr />
         <div className="flex-column">
@@ -159,7 +159,7 @@ export const CategoryPhoneModel = () => {
       {/* Image */}
 
       {/* Image Model */}
-      <section className="vh-100" style={{ backgroundColor: "#000000" }}>
+      <section className="vh-100" style={{ backgroundColor: "#ffffff" }}>
         <div className="container">
           <div className="row">
             <div className="col-md-3 mb-3 cusRow">

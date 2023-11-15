@@ -1,7 +1,7 @@
 export const Navbar = () => {
   return (
     <>
-      <header className="fixed-top" data-bs-theme="dark">
+      <header className="fixed-top" data-bs-theme="light">
         <nav className="navbar navBar">
           <div className="container-fluid">
             <a className="navbar-brand mergePosition">

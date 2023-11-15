@@ -274,7 +274,7 @@ export const PageDetail = () => {
                     </div>
                   </div>
                 </div>
-                <hr className="my-0" />
+                <hr />
                 <div className="card-body p-4">
                   <div className="d-flex flex-start">
                     <img
@@ -343,11 +343,11 @@ export const PageDetail = () => {
             </form>
           </div>
         </div>
-        {/* Add Comment */}
       </section>
+      {/* Add Comment */}
       {/* Comments */}
       {/* Add Comment */}
-      <div className="commentSections">
+      <div className="commentSections" style={{ backgroundColor: "white" }}>
         <div
           className="card-body cardBodyComment"
           style={{ padding: "30px 30px 30px 30px" }}

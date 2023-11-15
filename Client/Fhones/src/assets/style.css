@@ -39,30 +39,30 @@
 }
 
 body {
-    background-color: black !important;
+    background-color: rgb(255, 255, 255) !important;
 }
 
 .navBar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.609);
+    background-color: rgba(255, 255, 255, 0.609);
     backdrop-filter: blur(50px);
-    box-shadow: rgba(111, 28, 167, 0.519) 0px 13px 80px -5px, rgba(175, 12, 12, 0.3) 0px 8px 16px -8px;
+    /* box-shadow: rgba(111, 28, 167, 0.519) 0px 13px 80px -5px, rgba(175, 12, 12, 0.3) 0px 8px 16px -8px; */
 
 }
 
 .navbar-brand {
     /* margin-left: 10vh!important;
     margin-right: 10vh!important; */
-    color: white !important;
+    color: rgb(0, 0, 0) !important;
     font-size: 15px !important;
 }
 
 .banner {
     /* display: flex;
     justify-content: flex; */
-    background-color: black;
+    background-color: rgb(255, 255, 255)8, 54, 54);
     background-size: cover;
     width: 100vw;
     height: 100vh;
@@ -75,12 +75,12 @@ body {
     text-align: center;
     width: 20vh;
     height: 40px;
-    background: -webkit-linear-gradient(left, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
+    /* background: -webkit-linear-gradient(left, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%); */
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     color: rgb(255, 255, 255) !important;
     background-color: rgb(40, 35, 35) !important;
-    box-shadow: rgba(240, 46, 170, 0.4) -5px 5px, rgba(240, 46, 170, 0.3) -10px 10px, rgba(240, 46, 170, 0.2) -15px 15px, rgba(240, 46, 170, 0.1) -20px 20px, rgba(240, 46, 170, 0.05) -25px 25px;
+    /* box-shadow: rgba(240, 46, 170, 0.4) -5px 5px, rgba(240, 46, 170, 0.3) -10px 10px, rgba(240, 46, 170, 0.2) -15px 15px, rgba(240, 46, 170, 0.1) -20px 20px, rgba(240, 46, 170, 0.05) -25px 25px; */
 }
 
 .mergePosition {
@@ -114,7 +114,7 @@ body {
     height: 30vh;
     max-width: 96%;
     max-height: 90%;
-    color: white;
+    color: rgb(0, 0, 0);
     /* background-color: #ffffff1e; */
 }
 
@@ -255,7 +255,7 @@ body {
 .tiles {
     margin-top: 75vh;
     margin-bottom: 6vh;
-    background-color: black;
+    /* background-color: black; */
 }
 
 .tileContainer {
@@ -264,13 +264,13 @@ body {
     display: flex;
     align-items: first baseline;
     justify-content: space-around;
-    background-color: rgb(0, 0, 0);
+    /* background-color: rgb(0, 0, 0); */
 }
 
 .oneTiles {
     margin-bottom: 3vh;
-    background-color: rgba(24, 23, 25, 0.636) !important;
-    color: white;
+    background-color: rgba(255, 255, 255, 0.636) !important;
+    color: rgb(0, 0, 0);
     width: 25vh;
     height: 15vh;
     border-radius: 20px;

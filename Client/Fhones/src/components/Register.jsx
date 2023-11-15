@@ -1,8 +1,8 @@
-export const Login = () => {
+export const Register = () => {
   return (
     <>
       <section
-        className="h-100 gradient-form loginContainer"
+        className="h-100 gradient-form registerContainer"
         style={{ backgroundColor: "#eeeeee00" }}
         data-bs-theme="dark"
       >
@@ -15,17 +15,25 @@ export const Login = () => {
                     <div className="card-body p-md-5 mx-md-4">
                       <div className="text-center">
                         <h4 className="mt-1 mb-5 pb-1 loginText">
-                          Login to Fhones
+                          Register to Fhones
                         </h4>
                       </div>
                       <form>
                         <p className="loginText">
-                          Please login to your account
+                          Please Register to your account
                         </p>
                         <div className="form-outline mb-4">
                           <input
                             type="email"
                             id="form2Example11"
+                            className="form-control"
+                            placeholder="username"
+                          />
+                        </div>
+                        <div className="form-outline mb-4">
+                          <input
+                            type="password"
+                            id="form2Example22"
                             className="form-control"
                             placeholder="email address"
                           />
@@ -43,7 +51,7 @@ export const Login = () => {
                             className="btn btn-secondary btnCustom"
                             type="button"
                           >
-                            Log in
+                            Register
                           </button>
                         </div>
                         <div className="d-flex align-items-center justify-content-center pb-4 ">
@@ -57,7 +65,7 @@ export const Login = () => {
                       </form>
                     </div>
                   </div>
-                  <div className="col-lg-6 d-flex align-items-center gradient-custom-2"></div>
+                  <div className="col-lg-6 d-flex align-items-center gradient-custom-3"></div>
                 </div>
               </div>
             </div>
