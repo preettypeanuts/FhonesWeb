@@ -9,7 +9,7 @@ export const Banner = () => {
             <span className="gradient-text">Best Gadget</span>
             <span> </span>Here
           </h1>
-          <p className="text-dark-50">
+          <p className="text-dark-50" style={{marginTop: '25px'}}>
             Explore cutting-edge gadgets designed to elevate your digital
             lifestyle. From top-tier smartphones to the latest in smart tech,
             discover innovation for the modern era.

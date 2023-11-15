@@ -71,22 +71,22 @@ export const Footer = () => {
                     style={{ width: 60, backgroundColor: "#7c4dff", height: 2 }}
                   />
                   <p>
-                    <a href="#!" className="text-white">
+                    <a href="#!" className="text-black">
                       React
                     </a>
                   </p>
                   <p>
-                    <a href="#!" className="text-white">
+                    <a href="#!" className="text-black">
                       Bootstrap
                     </a>
                   </p>
                   <p>
-                    <a href="#!" className="text-white">
+                    <a href="#!" className="text-black">
                       GSM Arena API
                     </a>
                   </p>
                   <p>
-                    <a href="#!" className="text-white">
+                    <a href="#!" className="text-black">
                       Express
                     </a>
                   </p>
@@ -101,22 +101,22 @@ export const Footer = () => {
                     style={{ width: 60, backgroundColor: "#7c4dff", height: 2 }}
                   />
                   <p>
-                    <a href="#!" className="text-white">
+                    <a href="#!" className="text-black">
                       JWT
                     </a>
                   </p>
                   <p>
-                    <a href="#!" className="text-white">
+                    <a href="#!" className="text-black">
                       Jest
                     </a>
                   </p>
                   <p>
-                    <a href="#!" className="text-white">
+                    <a href="#!" className="text-black">
                       Google Cloud
                     </a>
                   </p>
                   <p>
-                    <a href="#!" className="text-white">
+                    <a href="#!" className="text-black">
                       Sequelize
                     </a>
                   </p>
@@ -155,7 +155,7 @@ export const Footer = () => {
             style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}
           >
             © 2020 Copyright:
-            <a className="text-white" href="https://mdbootstrap.com/">
+            <a className="text-black" href="https://mdbootstrap.com/">
               Fhones.com
             </a>
           </div>
