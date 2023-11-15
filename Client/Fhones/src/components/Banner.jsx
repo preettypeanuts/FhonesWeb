@@ -5,9 +5,9 @@ export const Banner = () => {
         <div className="teksOverlay">
           <p className="display-6">Fhones.com</p>
           <h1 className="display-1 bold text-dark-100">
-            Find your
-            <span className="gradient-text"> Best Gadget </span>
-            Here
+            Find your <span> </span>
+            <span className="gradient-text">Best Gadget</span>
+            <span> </span>Here
           </h1>
           <p className="text-dark-50">
             Explore cutting-edge gadgets designed to elevate your digital

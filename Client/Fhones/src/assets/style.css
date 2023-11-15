@@ -83,6 +83,13 @@ body {
     /* box-shadow: rgba(240, 46, 170, 0.4) -5px 5px, rgba(240, 46, 170, 0.3) -10px 10px, rgba(240, 46, 170, 0.2) -15px 15px, rgba(240, 46, 170, 0.1) -20px 20px, rgba(240, 46, 170, 0.05) -25px 25px; */
 }
 
+.gradient-text{
+    color: white;
+    border-radius: 20px;
+    background: -webkit-linear-gradient(left, rgb(238, 233, 174) 0%, rgb(16, 53, 3) 100%);
+
+}
+
 .mergePosition {
     padding-left: 10vh !important;
     padding-right: 10vh !important;
@@ -268,17 +275,18 @@ body {
 }
 
 .oneTiles {
+    border: 1px grey!important;
     margin-bottom: 3vh;
-    background-color: rgba(255, 255, 255, 0.636) !important;
+    background-color: rgba(0, 0, 0, 0.636) !important;
     color: rgb(0, 0, 0);
     width: 25vh;
     height: 15vh;
     border-radius: 20px;
-    box-shadow: rgba(161, 38, 38, 0.467) 0px 10px 36px 0px, rgba(158, 20, 20, 0.048) 0px 0px 0px 1px;
+    /* box-shadow: rgba(155, 99, 99, 0.467) 0px 10px 36px 0px, rgba(158, 20, 20, 0.048) 0px 0px 0px 1px; */
 }
 
 .customBtn {
-    color: black!important;
+    color: rgb(255, 255, 255)!important;
     display: flex;
     justify-content: center;
     align-items: center;

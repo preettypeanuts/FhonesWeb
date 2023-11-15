@@ -1,7 +1,7 @@
 export const CategoryPhoneModel = () => {
   return (
     <>
-      <section className="vh-100 tiles">
+      <section className="">
         <div className="vh-100 tileContainer">
           <div>
             <div className="vh-50 oneTiles customBtn text-white">
