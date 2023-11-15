@@ -278,6 +278,7 @@ body {
 }
 
 .customBtn {
+    color: black!important;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -287,6 +288,8 @@ body {
 }
 
 .oneTilesimg {
+    filter: contrast(-100), impor !important;;
+    color: black!important;
     max-width: 30px !important;
     vertical-align: middle;
     display: inline-block;
