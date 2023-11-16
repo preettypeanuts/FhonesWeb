@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { GoogleButton } from "./GoogleButton";
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -90,7 +91,11 @@ export const Login = () => {
                             className="link-offset-3 link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
                           >
                             Create new account
+                          
                           </Link>
+                        </div>
+                        <div className="text-center pt-1 mb-2 pb-1">
+                          <GoogleButton/>
                         </div>
                       </form>
                     </div>

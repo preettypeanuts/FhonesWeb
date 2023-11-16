@@ -14,7 +14,7 @@ export const CategoryPhoneModel = () => {
       const { data } = await axios.get(`
         http://localhost:3005/brands/${id}/devices
         `);
-        console.log(data, "datanya");
+      console.log(data, "datanya");
       setData(data);
       navigate("/device-list");
     } catch (error) {
@@ -23,12 +23,12 @@ export const CategoryPhoneModel = () => {
   }
   return (
     <>
-      <section className="" href="/category">
+      <section data-bs-spy="scroll" data-bs-target="#navbar-example2" className="" href="#brands">
         <div className="vh-100 tileContainer">
           <div>
             <button
               onClick={() => {
-                navigate("/device-list/apple-phones-48")
+                navigate("/device-list/apple-phones-48");
               }}
               className="vh-50 oneTiles customBtn text-white"
             >
@@ -39,7 +39,9 @@ export const CategoryPhoneModel = () => {
               Apple
             </button>
             <button
-              onClick={() => {navigate("/device-list/xiaomi-phones-80")}}
+              onClick={() => {
+                navigate("/device-list/xiaomi-phones-80");
+              }}
               className="oneTiles customBtn text-white"
             >
               <img
@@ -49,14 +51,18 @@ export const CategoryPhoneModel = () => {
               Xiaomi
             </button>
             <button
-              onClick={() => SendData("samsung-phones-9")}
+              onClick={() => {
+                navigate("/device-list/samsung-phones-9");
+              }}
               className="vh-50 oneTiles customBtn text-black"
             >
               <box-icon name="bolt-circle" type="solid" color="#ffffff" />
               Samsung
             </button>
             <button
-              onClick={() => SendData("huawei-phones-58")}
+              onClick={() => {
+                navigate("/device-list/huawei-phones-58");
+              }}
               className="vh-50 oneTiles customBtn text-white"
             >
               <img
@@ -68,7 +74,9 @@ export const CategoryPhoneModel = () => {
           </div>
           <div>
             <button
-              onClick={() => SendData("blackberry-phones-36")}
+              onClick={() => {
+                navigate("/device-list/blackberry-phones-36");
+              }}
               className="oneTiles customBtn text-white"
             >
               <img
@@ -78,7 +86,7 @@ export const CategoryPhoneModel = () => {
               Blackberry
             </button>
             <button
-              onClick={() => SendData("google-phones-107")}
+              onClick={() => navigate("/device-list/google-phones-107")}
               className="vh-50 oneTiles customBtn text-white"
             >
               <img
@@ -88,100 +96,165 @@ export const CategoryPhoneModel = () => {
               Pixel
             </button>
             <button
-              onClick={() => SendData("meizu-phones-74")}
+              onClick={() => navigate("/device-list/meizu-phones-74")}
               className="vh-50 oneTiles customBtn text-white"
             >
               <box-icon name="bolt-circle" type="solid" color="#ffffff" />
               Meizu
             </button>
-            <div className="vh-50 oneTiles customBtn text-white">
+            <button
+              onClick={() => {
+                navigate("/device-list/samsung-phones-9");
+              }}
+              className="vh-50 oneTiles customBtn text-white"
+            >
               <img
                 className="oneTilesimg"
                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAACc0lEQVR4nO2WTUhVYRCGz+Wm/WJi0iqT3AWRWava9GM/GNQuSjdFEBalgUW1LbJtZhDZToIgFNq16GfVKgikoKLgGm2i6McWtbDSJ0Ze6eNrjn3SJQjuCwfONzPvO3PvmZlzsqyCChIBLAQGgM/AZsffCowBVy02KzeAYX7hQeQrAA8D/3C5kzfzOzYF/p2Of3U5CzjhJBgI/Ncdf8/fJLwAtAXnPifB88D/yvFfDPxtwPnU5Dsk8Ayokq3XSTABzAMW4WMqoWlIy7A1pYBbgUi3bNtykiwDmnJ8reIeD2xDKQW8DggfgTpgDjDqJLHmXOfYS0BRXNOYxmhKAe8isX7ZjzmJtgDbHftRcfoj+5uUAkYi0jdgJbDAKW4P0B7ZLGa+OMYN8SilgMvOL7otX09k3w8c9MbPOI5OX0oBa4FJh2yjVA28DGyW/FBwfqEYi41hms0zJb4BNAZ7IMbUWAK7A5sl7wzOu6KxC9Er7UbL5RUwCnwFzkikA/gQiXQp9q7Oh4Ejur8jX1fEea8+qZK25Sh5BQwFpKfARmAJcE1LJxzLVcAP63ZNx3fZwrGbELdOWqY5jZteAR3OMxsElgIbgMfRWF7Rr+22+2jsLHa9uINOT+3zCigCT5xn90l/tTXXSb3zbcTqgQO66mUbU0y1OMaNYWNezGvEppyNh973LcByazzFz7VL953ytUTfBvGGXDHDEGYmVAucUyePRwL23C8BNQ6vRj6LCTEurbPA4uy/AHCffLwFGhxOg7OqQ9ybTQHtOSLWH2v+sEW9jxPD3tkUUABOqWm+qHNPW38kcGu1cEbELWkyCskFVFBB9g/xEy++aEwdPIH9AAAAAElFTkSuQmCC"
               />
               Nokia
-            </div>
+            </button>
           </div>
           <div>
-            <div className="oneTiles customBtn text-white">
+            <button
+              onClick={() => {
+                navigate("/device-list/samsung-phones-9");
+              }}
+              className="oneTiles customBtn text-white"
+            >
               <img
                 className="oneTilesimg"
                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAqUlEQVR4nO3WQQrCMBBA0TmHV7LF43gAKfRSVa9k68KuvgRSKBXJjMwgaP6uNOGRhEBEan8bcACuwB17ac4FaK1oj1+dZaXeNRo4ba93Zw08BcCjBg5JrHBh7A44AvN2fCi8lPEYmNfm5arklYfD/eqeP7b/w2Axflf4bXWrvZJS34SnAPemgdPLwbtBA7cB8L4IZ7xzRE8qdIU36eXw4ZmnOYN6pbWf7AmCgC/kPy85UgAAAABJRU5ErkJggg=="
               />
               Nothing Phone
-            </div>
-            <div className="vh-50 oneTiles customBtn text-white">
+            </button>
+            <button
+              onClick={() => {
+                navigate("/device-list/samsung-phones-9");
+              }}
+              className="vh-50 oneTiles customBtn text-white"
+            >
               <img
                 className="oneTilesimg"
                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAACXBIWXMAAAsTAAALEwEAmpwYAAABaklEQVR4nN3XsUsWYRzA8TO1cAhJkKRAo7WxSWgIwRoiosUmXRz9CySiIQI3wyBoCHRRDGpwtqXFcHAJhJaGyEEtxaWooE88eMP1gvbc+/56g77rHffh7nnunnuKIihcxDTGoq55bOjEDH447F7RjvDM7420A73ZgL5FRzvg1xX0Cy63A+2qjOtnXPvraAon8Bx3MVBEhn7cxxvs4B2eYrhyTh8m8bI8vodNPMZQM+gtHDi691jH92PO+YqpOuht/BTXjRz0PPYD0QV058CzgehK1nuNDmwFoWnsL+SO7aC4XmWhKVwJhOeK3HD1X8GXAuHVOvCZQDh9x8/VwT8E4st14HmxPUorWQ58R3xrOPsn+FS5EkW2i5M5d/0wGH6QO8692A5C09Pry4JLfCIIHs9GK/hii+iL2mgKPQ1/ko2rz0d8O+L4Bk4XzeZwlqedwqdydi7jetpBVHYSo1gq50X6XXrSElr8j/0C3uXJ8WZ0A0QAAAAASUVORK5CYII="
               />
               OnePlus
-            </div>
-            <div className="vh-50 oneTiles customBtn text-white">
+            </button>
+            <button
+              onClick={() => {
+                navigate("/device-list/samsung-phones-9");
+              }}
+              className="vh-50 oneTiles customBtn text-white"
+            >
               <box-icon name="bolt-circle" type="solid" color="#ffffff" />
               Oppo
-            </div>
-            <div className="vh-50 oneTiles customBtn text-white">
+            </button>
+            <button
+              onClick={() => {
+                navigate("/device-list/samsung-phones-9");
+              }}
+              className="vh-50 oneTiles customBtn text-white"
+            >
               <img
                 className="oneTilesimg"
                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAACc0lEQVR4nO2WTUhVYRCGz+Wm/WJi0iqT3AWRWava9GM/GNQuSjdFEBalgUW1LbJtZhDZToIgFNq16GfVKgikoKLgGm2i6McWtbDSJ0Ze6eNrjn3SJQjuCwfONzPvO3PvmZlzsqyCChIBLAQGgM/AZsffCowBVy02KzeAYX7hQeQrAA8D/3C5kzfzOzYF/p2Of3U5CzjhJBgI/Ncdf8/fJLwAtAXnPifB88D/yvFfDPxtwPnU5Dsk8Ayokq3XSTABzAMW4WMqoWlIy7A1pYBbgUi3bNtykiwDmnJ8reIeD2xDKQW8DggfgTpgDjDqJLHmXOfYS0BRXNOYxmhKAe8isX7ZjzmJtgDbHftRcfoj+5uUAkYi0jdgJbDAKW4P0B7ZLGa+OMYN8SilgMvOL7otX09k3w8c9MbPOI5OX0oBa4FJh2yjVA28DGyW/FBwfqEYi41hms0zJb4BNAZ7IMbUWAK7A5sl7wzOu6KxC9Er7UbL5RUwCnwFzkikA/gQiXQp9q7Oh4Ejur8jX1fEea8+qZK25Sh5BQwFpKfARmAJcE1LJxzLVcAP63ZNx3fZwrGbELdOWqY5jZteAR3OMxsElgIbgMfRWF7Rr+22+2jsLHa9uINOT+3zCigCT5xn90l/tTXXSb3zbcTqgQO66mUbU0y1OMaNYWNezGvEppyNh973LcByazzFz7VL953ytUTfBvGGXDHDEGYmVAucUyePRwL23C8BNQ6vRj6LCTEurbPA4uy/AHCffLwFGhxOg7OqQ9ybTQHtOSLWH2v+sEW9jxPD3tkUUABOqWm+qHNPW38kcGu1cEbELWkyCskFVFBB9g/xEy++aEwdPIH9AAAAAElFTkSuQmCC"
               />
               Vivo
-            </div>
+            </button>
           </div>
           <div>
-            <div className="oneTiles customBtn text-white">
+            <button
+              onClick={() => {
+                navigate("/device-list/samsung-phones-9");
+              }}
+              className="oneTiles customBtn text-white"
+            >
               <img
                 className="oneTilesimg"
                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAqUlEQVR4nO3WQQrCMBBA0TmHV7LF43gAKfRSVa9k68KuvgRSKBXJjMwgaP6uNOGRhEBEan8bcACuwB17ac4FaK1oj1+dZaXeNRo4ba93Zw08BcCjBg5JrHBh7A44AvN2fCi8lPEYmNfm5arklYfD/eqeP7b/w2Axflf4bXWrvZJS34SnAPemgdPLwbtBA7cB8L4IZ7xzRE8qdIU36eXw4ZmnOYN6pbWf7AmCgC/kPy85UgAAAABJRU5ErkJggg=="
               />
               Realme
-            </div>
-            <div className="vh-50 oneTiles customBtn text-white">
+            </button>
+            <button
+              onClick={() => {
+                navigate("/device-list/samsung-phones-9");
+              }}
+              className="vh-50 oneTiles customBtn text-white"
+            >
               <img
                 className="oneTilesimg"
                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAACXBIWXMAAAsTAAALEwEAmpwYAAABaklEQVR4nN3XsUsWYRzA8TO1cAhJkKRAo7WxSWgIwRoiosUmXRz9CySiIQI3wyBoCHRRDGpwtqXFcHAJhJaGyEEtxaWooE88eMP1gvbc+/56g77rHffh7nnunnuKIihcxDTGoq55bOjEDH447F7RjvDM7420A73ZgL5FRzvg1xX0Cy63A+2qjOtnXPvraAon8Bx3MVBEhn7cxxvs4B2eYrhyTh8m8bI8vodNPMZQM+gtHDi691jH92PO+YqpOuht/BTXjRz0PPYD0QV058CzgehK1nuNDmwFoWnsL+SO7aC4XmWhKVwJhOeK3HD1X8GXAuHVOvCZQDh9x8/VwT8E4st14HmxPUorWQ58R3xrOPsn+FS5EkW2i5M5d/0wGH6QO8692A5C09Pry4JLfCIIHs9GK/hii+iL2mgKPQ1/ko2rz0d8O+L4Bk4XzeZwlqedwqdydi7jetpBVHYSo1gq50X6XXrSElr8j/0C3uXJ8WZ0A0QAAAAASUVORK5CYII="
               />
               Sony
-            </div>
-            <div className="vh-50 oneTiles customBtn text-white">
+            </button>
+            <button
+              onClick={() => {
+                navigate("/device-list/samsung-phones-9");
+              }}
+              className="vh-50 oneTiles customBtn text-white"
+            >
               <box-icon name="bolt-circle" type="solid" color="#ffffff" />
               Acer
-            </div>
-            <div className="vh-50 oneTiles customBtn text-white">
+            </button>
+            <button
+              onClick={() => {
+                navigate("/device-list/samsung-phones-9");
+              }}
+              className="vh-50 oneTiles customBtn text-white"
+            >
               <img
                 className="oneTilesimg"
                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAACc0lEQVR4nO2WTUhVYRCGz+Wm/WJi0iqT3AWRWava9GM/GNQuSjdFEBalgUW1LbJtZhDZToIgFNq16GfVKgikoKLgGm2i6McWtbDSJ0Ze6eNrjn3SJQjuCwfONzPvO3PvmZlzsqyCChIBLAQGgM/AZsffCowBVy02KzeAYX7hQeQrAA8D/3C5kzfzOzYF/p2Of3U5CzjhJBgI/Ncdf8/fJLwAtAXnPifB88D/yvFfDPxtwPnU5Dsk8Ayokq3XSTABzAMW4WMqoWlIy7A1pYBbgUi3bNtykiwDmnJ8reIeD2xDKQW8DggfgTpgDjDqJLHmXOfYS0BRXNOYxmhKAe8isX7ZjzmJtgDbHftRcfoj+5uUAkYi0jdgJbDAKW4P0B7ZLGa+OMYN8SilgMvOL7otX09k3w8c9MbPOI5OX0oBa4FJh2yjVA28DGyW/FBwfqEYi41hms0zJb4BNAZ7IMbUWAK7A5sl7wzOu6KxC9Er7UbL5RUwCnwFzkikA/gQiXQp9q7Oh4Ejur8jX1fEea8+qZK25Sh5BQwFpKfARmAJcE1LJxzLVcAP63ZNx3fZwrGbELdOWqY5jZteAR3OMxsElgIbgMfRWF7Rr+22+2jsLHa9uINOT+3zCigCT5xn90l/tTXXSb3zbcTqgQO66mUbU0y1OMaNYWNezGvEppyNh973LcByazzFz7VL953ytUTfBvGGXDHDEGYmVAucUyePRwL23C8BNQ6vRj6LCTEurbPA4uy/AHCffLwFGhxOg7OqQ9ybTQHtOSLWH2v+sEW9jxPD3tkUUABOqWm+qHNPW38kcGu1cEbELWkyCskFVFBB9g/xEy++aEwdPIH9AAAAAElFTkSuQmCC"
               />
               Lenovo
-            </div>
+            </button>
           </div>
           <div>
-            <div className="oneTiles customBtn text-white">
+            <button
+              onClick={() => {
+                navigate("/device-list/samsung-phones-9");
+              }}
+              className="oneTiles customBtn text-white"
+            >
               <img
                 className="oneTilesimg"
                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAqUlEQVR4nO3WQQrCMBBA0TmHV7LF43gAKfRSVa9k68KuvgRSKBXJjMwgaP6uNOGRhEBEan8bcACuwB17ac4FaK1oj1+dZaXeNRo4ba93Zw08BcCjBg5JrHBh7A44AvN2fCi8lPEYmNfm5arklYfD/eqeP7b/w2Axflf4bXWrvZJS34SnAPemgdPLwbtBA7cB8L4IZ7xzRE8qdIU36eXw4ZmnOYN6pbWf7AmCgC/kPy85UgAAAABJRU5ErkJggg=="
               />
               Honor
-            </div>
-            <div className="vh-50 oneTiles customBtn text-white">
+            </button>
+            <button
+              onClick={() => {
+                navigate("/device-list/samsung-phones-9");
+              }}
+              className="vh-50 oneTiles customBtn text-white"
+            >
               <img
                 className="oneTilesimg"
                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAACXBIWXMAAAsTAAALEwEAmpwYAAABaklEQVR4nN3XsUsWYRzA8TO1cAhJkKRAo7WxSWgIwRoiosUmXRz9CySiIQI3wyBoCHRRDGpwtqXFcHAJhJaGyEEtxaWooE88eMP1gvbc+/56g77rHffh7nnunnuKIihcxDTGoq55bOjEDH447F7RjvDM7420A73ZgL5FRzvg1xX0Cy63A+2qjOtnXPvraAon8Bx3MVBEhn7cxxvs4B2eYrhyTh8m8bI8vodNPMZQM+gtHDi691jH92PO+YqpOuht/BTXjRz0PPYD0QV058CzgehK1nuNDmwFoWnsL+SO7aC4XmWhKVwJhOeK3HD1X8GXAuHVOvCZQDh9x8/VwT8E4st14HmxPUorWQ58R3xrOPsn+FS5EkW2i5M5d/0wGH6QO8692A5C09Pry4JLfCIIHs9GK/hii+iL2mgKPQ1/ko2rz0d8O+L4Bk4XzeZwlqedwqdydi7jetpBVHYSo1gq50X6XXrSElr8j/0C3uXJ8WZ0A0QAAAAASUVORK5CYII="
               />
               Razer
-            </div>
-            <div className="vh-50 oneTiles customBtn text-white">
+            </button>
+            <button
+              onClick={() => {
+                navigate("/device-list/samsung-phones-9");
+              }}
+              className="vh-50 oneTiles customBtn text-white"
+            >
               <box-icon name="bolt-circle" type="solid" color="#ffffff" />
               Samsung
-            </div>
-            <div className="vh-50 oneTiles customBtn text-white">
+            </button>
+            <button
+              onClick={() => {
+                navigate("/device-list/samsung-phones-9");
+              }}
+              className="vh-50 oneTiles customBtn text-white"
+            >
               <img
                 className="oneTilesimg"
                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAACc0lEQVR4nO2WTUhVYRCGz+Wm/WJi0iqT3AWRWava9GM/GNQuSjdFEBalgUW1LbJtZhDZToIgFNq16GfVKgikoKLgGm2i6McWtbDSJ0Ze6eNrjn3SJQjuCwfONzPvO3PvmZlzsqyCChIBLAQGgM/AZsffCowBVy02KzeAYX7hQeQrAA8D/3C5kzfzOzYF/p2Of3U5CzjhJBgI/Ncdf8/fJLwAtAXnPifB88D/yvFfDPxtwPnU5Dsk8Ayokq3XSTABzAMW4WMqoWlIy7A1pYBbgUi3bNtykiwDmnJ8reIeD2xDKQW8DggfgTpgDjDqJLHmXOfYS0BRXNOYxmhKAe8isX7ZjzmJtgDbHftRcfoj+5uUAkYi0jdgJbDAKW4P0B7ZLGa+OMYN8SilgMvOL7otX09k3w8c9MbPOI5OX0oBa4FJh2yjVA28DGyW/FBwfqEYi41hms0zJb4BNAZ7IMbUWAK7A5sl7wzOu6KxC9Er7UbL5RUwCnwFzkikA/gQiXQp9q7Oh4Ejur8jX1fEea8+qZK25Sh5BQwFpKfARmAJcE1LJxzLVcAP63ZNx3fZwrGbELdOWqY5jZteAR3OMxsElgIbgMfRWF7Rr+22+2jsLHa9uINOT+3zCigCT5xn90l/tTXXSb3zbcTqgQO66mUbU0y1OMaNYWNezGvEppyNh973LcByazzFz7VL953ytUTfBvGGXDHDEGYmVAucUyePRwL23C8BNQ6vRj6LCTEurbPA4uy/AHCffLwFGhxOg7OqQ9ybTQHtOSLWH2v+sEW9jxPD3tkUUABOqWm+qHNPW38kcGu1cEbELWkyCskFVFBB9g/xEy++aEwdPIH9AAAAAElFTkSuQmCC"
               />
               Huawei
-            </div>
+            </button>
           </div>
         </div>
       </section>

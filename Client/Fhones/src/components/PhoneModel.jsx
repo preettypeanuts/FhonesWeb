@@ -1,12 +1,12 @@
+import axios from "axios";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
-
-import axios from "axios";
 import { useEffect, useState } from "react";
-// import { redirect, useNavigate } from "react-router-dom";2
-export const PhoneModel = () => {
-  const [data, setData] = useState([]);
 
+export const PhoneModel = () => {
+  window.scrollTo(0, 0);
+
+  const [data, setData] = useState([]);
   const { id } = useParams();
 
   useEffect(() => {
@@ -15,7 +15,7 @@ export const PhoneModel = () => {
         const { data } = await axios.get(`
           http://localhost:3005/brands/${id}/devices
           `);
-        console.log(data, "datanya");
+        console.log(data);
         setData(data);
       } catch (error) {
         console.log(error);
@@ -26,7 +26,6 @@ export const PhoneModel = () => {
 
   return (
     <>
-
       {/* Image */}
       <section
         className="vh-50 imageContainer"
@@ -39,7 +38,7 @@ export const PhoneModel = () => {
             className="img-fluid imageCategory"
             alt=""
           />
-          <p className="display-1 displayCustom customtext">Phone Models</p>
+          <p className="display-1 displayCustom customtext">Brand Units</p>
         </div>
       </section>
       {/* Image */}
@@ -48,115 +47,31 @@ export const PhoneModel = () => {
       <section className="" style={{ backgroundColor: "#ffffff" }}>
         <div className="container">
           <div className="row">
-            {data.map(model => {
-              return(
+            {data.map((model) => {
+              return (
                 <>
-                
-            <div className="col-md-3 mb-3 cusRow">
-              <div className="imageOuter d-flex flex-column align-items-center">
-                <Link
-                  to={"/device-detail"}
-                  href=""
-                  className="link-underline-opacity-0link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover link-dark"
-                  >
-                  <img
-                    src={model.img}
-                    className="img-fluid"
-                    alt="Gambar 1"
-                    />
-                  <div className="mt-2">
-                    <p className="mb-0">{model.name}</p>
+                  <div className="col-md-3 mb-3 cusRow">
+                    <div className="imageOuter d-flex flex-column align-items-center">
+                      <Link
+                        to={`device-detail/${model.id}`}
+                        value={model.id}
+                        className="link-underline-opacity-0link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover link-dark"
+                      >
+                        <img
+                          src={model.img}
+                          className="img-fluid"
+                          alt="Gambar 1"
+                        />
+                        <div className="mt-2">
+                          <p className="mb-0">{model.name}</p>
+                        </div>
+                      </Link>
+                      {/* <button value={model.id} className="btn btn-outline-dark btnCustom">Detail</button> */}
+                    </div>
                   </div>
-                </Link>
-              </div>
-            </div>
-                    </>
-                  )
-                })}
-            {/* <div className="col-md-3 mb-3 cusRow">
-              <div className="imageOuter d-flex flex-column align-items-center">
-                <img
-                  src="https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-pro.jpg"
-                  className="img-fluid"
-                  alt="Gambar 1"
-                />
-                <div className="mt-2">
-                  <p className="mb-0">iPhone 15 Promax</p>
-                </div>
-              </div>
-            </div>
-            <div className="col-md-3 mb-3 cusRow">
-              <div className="imageOuter d-flex flex-column align-items-center">
-                <img
-                  src="https://fdn2.gsmarena.com/vv/bigpic/apple-ipad-pro-129-2022.jpg"
-                  className="img-fluid"
-                  alt="Gambar 1"
-                />
-                <div className="mt-2">
-                  <p className="mb-0">iPhone 15 Promax</p>
-                </div>
-              </div>
-            </div>
-            <div className="col-md-3 mb-3 cusRow">
-              <div className="imageOuter d-flex flex-column align-items-center">
-                <img
-                  src="https://fdn2.gsmarena.com/vv/bigpic/apple-ipad-mini-2021.jpg"
-                  className="img-fluid"
-                  alt="Gambar 1"
-                />
-                <div className="mt-2">
-                  <p className="mb-0">iPhone 15 Promax</p>
-                </div>
-              </div>
-            </div>
-            <div className="col-md-3 mb-3 cusRow">
-              <div className="imageOuter d-flex flex-column align-items-center">
-                <img
-                  src="https://fdn2.gsmarena.com/vv/bigpic/apple-ipad-mini-2021.jpg"
-                  className="img-fluid"
-                  alt="Gambar 1"
-                />
-                <div className="mt-2">
-                  <p className="mb-0">iPhone 15 Promax</p>
-                </div>
-              </div>
-            </div>
-            <div className="col-md-3 mb-3 cusRow">
-              <div className="imageOuter d-flex flex-column align-items-center">
-                <img
-                  src="https://fdn2.gsmarena.com/vv/bigpic/apple-ipad-mini-2021.jpg"
-                  className="img-fluid"
-                  alt="Gambar 1"
-                />
-                <div className="mt-2">
-                  <p className="mb-0">iPhone 15 Promax</p>
-                </div>
-              </div>
-            </div>
-            <div className="col-md-3 mb-3 cusRow">
-              <div className="imageOuter d-flex flex-column align-items-center">
-                <img
-                  src="https://fdn2.gsmarena.com/vv/bigpic/apple-ipad-mini-2021.jpg"
-                  className="img-fluid"
-                  alt="Gambar 1"
-                />
-                <div className="mt-2">
-                  <p className="mb-0">iPhone 15 Promax</p>
-                </div>
-              </div>
-            </div>
-            <div className="col-md-3 mb-3 cusRow">
-              <div className="imageOuter d-flex flex-column align-items-center">
-                <img
-                  src="https://fdn2.gsmarena.com/vv/bigpic/apple-ipad-mini-2021.jpg"
-                  className="img-fluid"
-                  alt="Gambar 1"
-                />
-                <div className="mt-2">
-                  <p className="mb-0">iPhone 15 Promax</p>
-                </div>
-              </div>
-            </div> */}
+                </>
+              );
+            })}
           </div>
         </div>
       </section>

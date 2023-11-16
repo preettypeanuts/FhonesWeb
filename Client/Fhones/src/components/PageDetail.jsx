@@ -1,20 +1,21 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+// import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 export const PageDetail = () => {
   window.scrollTo(0, 0);
-  const [data, setData] = useState([]);
 
+  const [data, setData] = useState([]);
   const { id } = useParams();
 
   useEffect(() => {
     async function receiveData() {
       try {
         const { data } = await axios.get(`
-          http://localhost:3005/brands/${id}/devices
+          http://localhost:3005/brands/${id}/detail
           `);
-        console.log(data, "datanya");
+        console.log(data);
         setData(data);
       } catch (error) {
         console.log(error);
@@ -26,156 +27,171 @@ export const PageDetail = () => {
   return (
     <>
       {/* Content */}
-      <div className="artContainer">
-        <div className="overflowCard">
-          <img
-            className="phoneImg"
-            src="https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg"
-            alt="..."
-          />
-          <div className="teksPosition">
-            <p className="display-1">iPhone 15 Promax</p>
-            <hr />
-          </div>
-        </div>
-      </div>
-      {/* Like */}
-      <section>
-        <div
-          className="card-body cardBodyLike"
-          style={{ padding: "30px 30px 30px 90px" }}
-        >
-          <h1 className="card-text">4441 Likes</h1>
-          <button className="btn btn-outline">
-            {" "}
-            <box-icon
-              name="heart"
-              type="solid"
-              style={{ verticalAlign: "middle", marginRight: 10 }}
-            />
-            Like
-          </button>
-        </div>
-      </section>
-      {/* Like */}
-      <div className="outerCardTop">
-        <div className="cardTop">
-          <div
-            className="card-body cardBody"
-            style={{ padding: "30px 30px 30px 30px" }}
-          >
-            <table>
-              <thead>
-                <tr>
-                  <th scope="col" style={{ paddingRight: 20 }}>
-                    <box-icon name="mobile" />
-                  </th>
-                  <td scope="col">June, 21 2001</td>
-                </tr>
-                <tr>
-                  <th scope="col">
-                    <box-icon type="solid" name="mobile-vibration" />
-                  </th>
-                  <td scope="col">221g, 8.3mm thickness</td>
-                </tr>
-                <tr>
-                  <th scope="col">
-                    <box-icon name="hive" />
-                  </th>
-                  <td scope="col">iOS 17, up to iOS 17.1.1</td>
-                </tr>
-                <tr>
-                  <th scope="col">
-                    <box-icon type="solid" name="category-alt" />
-                  </th>
-                  <td scope="col">256GB/512GB/1TB storage, no card slot</td>
-                </tr>
-              </thead>
-            </table>
-          </div>
-          <div
-            className="card-body cardBody"
-            style={{ padding: "30px 30px 30px 30px" }}
-          >
-            <h1 className="card-text">6,7" inch</h1>
-            <h1>
-              <box-icon name="mobile-alt" />
-            </h1>
-            <h6 className="card-subtitle mb-2 text-body-secondary">
-              Dimension
-            </h6>
-          </div>
-          <div
-            className="card-body cardBody"
-            style={{ padding: "30px 30px 30px 30px" }}
-          >
-            <h1 className="card-text">48 MP</h1>
-            <h1>
-              <box-icon name="camera" type="solid" />
-            </h1>
-            <h6 className="card-subtitle mb-2 text-body-secondary">Camera</h6>
-          </div>
-          <div
-            className="card-body cardBody"
-            style={{ padding: "30px 30px 30px 30px" }}
-          >
-            <h1 className="card-text">8GB RAM</h1>
-            <h1>
-              <box-icon type="solid" name="memory-card" />
-            </h1>
-            <h6 className="card-subtitle mb-2 text-body-secondary">RAM</h6>
-          </div>
-          <div
-            className="card-body cardBody"
-            style={{ padding: "30px 30px 30px 30px" }}
-          >
-            <h1 className="card-text">4441 mAh</h1>
-            <h1>
-              <box-icon name="battery" type="solid" />
-            </h1>
-            <h6 className="card-subtitle mb-2 text-body-secondary">Battery</h6>
-          </div>
-        </div>
-      </div>
-      {/* Content */}
+      {/* {data.map((unit) => {
+        return ( */}
+          <>
+            <div className="artContainer">
+              <div className="overflowCard">
+                <img
+                  className="phoneImg"
+                  src={data.img}
+                  alt="..."
+                />
+                <div className="teksPosition">
+                  <p className="display-1">{data.name}</p>
+                  <hr />
+                </div>
+              </div>
+            </div>
+            {/* Like */}
+            <section>
+              <div
+                className="card-body cardBodyLike"
+                style={{ padding: "30px 30px 30px 90px" }}
+              >
+                <h1 className="card-text">4441 Likes</h1>
+                <button className="btn btn-outline">
+                  {" "}
+                  <box-icon
+                    name="heart"
+                    type="solid"
+                    style={{ verticalAlign: "middle", marginRight: 10 }}
+                  />
+                  Like
+                </button>
+              </div>
+            </section>
+            {/* Like */}
+            <div className="outerCardTop">
+              <div className="cardTop">
+                <div
+                  className="card-body cardBody"
+                  style={{ padding: "30px 30px 30px 30px" }}
+                >
+                  <table>
+                    <thead>
+                      <tr>
+                        <th scope="col" style={{ paddingRight: 20 }}>
+                          <box-icon name="mobile" />
+                        </th>
+                        <td scope="col">June, 21 2001</td>
+                      </tr>
+                      <tr>
+                        <th scope="col">
+                          <box-icon type="solid" name="mobile-vibration" />
+                        </th>
+                        <td scope="col">221g, 8.3mm thickness</td>
+                      </tr>
+                      <tr>
+                        <th scope="col">
+                          <box-icon name="hive" />
+                        </th>
+                        <td scope="col">iOS 17, up to iOS 17.1.1</td>
+                      </tr>
+                      <tr>
+                        <th scope="col">
+                          <box-icon type="solid" name="category-alt" />
+                        </th>
+                        <td scope="col">
+                          256GB/512GB/1TB storage, no card slot
+                        </td>
+                      </tr>
+                    </thead>
+                  </table>
+                </div>
+                <div
+                  className="card-body cardBody"
+                  style={{ padding: "30px 30px 30px 30px" }}
+                >
+                  <h1 className="card-text">6,7" inch</h1>
+                  <h1>
+                    <box-icon name="mobile-alt" />
+                  </h1>
+                  <h6 className="card-subtitle mb-2 text-body-secondary">
+                    Dimension
+                  </h6>
+                </div>
+                <div
+                  className="card-body cardBody"
+                  style={{ padding: "30px 30px 30px 30px" }}
+                >
+                  <h1 className="card-text">48 MP</h1>
+                  <h1>
+                    <box-icon name="camera" type="solid" />
+                  </h1>
+                  <h6 className="card-subtitle mb-2 text-body-secondary">
+                    Camera
+                  </h6>
+                </div>
+                <div
+                  className="card-body cardBody"
+                  style={{ padding: "30px 30px 30px 30px" }}
+                >
+                  <h1 className="card-text">8GB RAM</h1>
+                  <h1>
+                    <box-icon type="solid" name="memory-card" />
+                  </h1>
+                  <h6 className="card-subtitle mb-2 text-body-secondary">
+                    RAM
+                  </h6>
+                </div>
+                <div
+                  className="card-body cardBody"
+                  style={{ padding: "30px 30px 30px 30px" }}
+                >
+                  <h1 className="card-text">4441 mAh</h1>
+                  <h1>
+                    <box-icon name="battery" type="solid" />
+                  </h1>
+                  <h6 className="card-subtitle mb-2 text-body-secondary">
+                    Battery
+                  </h6>
+                </div>
+              </div>
+            </div>
+            {/* Content */}
+            {/* Table Content */}
+            <div className="tableContainer">
+              <h1 className="display-6" style={{ paddingLeft: 20 }}>
+                Full Spesifications
+              </h1>
+              <hr />
+              <div className="tableInner table table-borderless">
+                <table>
+                  <tbody>
+                    <tr>
+                      <th scope="col" style={{ paddingRight: 20 }}>
+                        Network
+                      </th>
+                      <td scope="col " style={{ paddingRight: 250 }}>
+                        Tecnology
+                      </td>
+                      <td scope="col ">GSM / CDMA / HSPA / EVDO / LTE / 5G</td>
+                    </tr>
+                    <tr>
+                      <th scope="col">Launch</th>
+                      <td scope="col">221g, 8.3mm thickness</td>
+                      <td scope="col ">GSM / CDMA / HSPA / EVDO / LTE / 5G</td>
+                    </tr>
+                    <tr>
+                      <th scope="col">Body</th>
+                      <td scope="col">iOS 17, up to iOS 17.1.1</td>
+                      <td scope="col ">GSM / CDMA / HSPA / EVDO / LTE / 5G</td>
+                    </tr>
+                    <tr>
+                      <th scope="col">Display</th>
+                      <td scope="col">256GB/512GB/1TB storage, no card slot</td>
+                      <td scope="col ">GSM / CDMA / HSPA / EVDO / LTE / 5G</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </>
+        {/* );
+      })} */}
       {/* Table Content */}
-      <div className="tableContainer">
-        <h1 className="display-6" style={{ paddingLeft: 20 }}>
-          Full Spesifications
-        </h1>
-        <hr />
-        <div className="tableInner table table-borderless">
-          <table>
-            <tbody>
-              <tr>
-                <th scope="col" style={{ paddingRight: 20 }}>
-                  Network
-                </th>
-                <td scope="col " style={{ paddingRight: 250 }}>
-                  Tecnology
-                </td>
-                <td scope="col ">GSM / CDMA / HSPA / EVDO / LTE / 5G</td>
-              </tr>
-              <tr>
-                <th scope="col">Launch</th>
-                <td scope="col">221g, 8.3mm thickness</td>
-                <td scope="col ">GSM / CDMA / HSPA / EVDO / LTE / 5G</td>
-              </tr>
-              <tr>
-                <th scope="col">Body</th>
-                <td scope="col">iOS 17, up to iOS 17.1.1</td>
-                <td scope="col ">GSM / CDMA / HSPA / EVDO / LTE / 5G</td>
-              </tr>
-              <tr>
-                <th scope="col">Display</th>
-                <td scope="col">256GB/512GB/1TB storage, no card slot</td>
-                <td scope="col ">GSM / CDMA / HSPA / EVDO / LTE / 5G</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-      {/* Table Content */}
+
       {/* Comments */}
       <section>
         <div className="container my-5 py-5">

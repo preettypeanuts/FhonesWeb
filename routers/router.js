@@ -8,6 +8,7 @@ const DataController = require('../controllers/DataController')
 const UserController = require('../controllers/UserController')
 const LikeController = require('../controllers/LikeController')
 const CommentController = require('../controllers/CommentController')
+const GoogleController = require('../controllers/GoogleController')
 
 const middleware = (req, res, next) => { next() }
 router.use(middleware)
@@ -20,6 +21,9 @@ router.get('/brands', DataController.allBrands)
 router.get('/brands/:id/devices', DataController.brandProductList)
 router.get('/brands/:id/detail', DataController.deviceDetail)
 router.get('/brands/:id/search', DataController.searchDevice)
+
+// Google Login
+router.post('/auth/google/callback', GoogleController.login)
 
 //User endpoint
 router.post('/login', UserController.login)

@@ -45,7 +45,7 @@ function App() {
           loader: redirectIfUnaunthenticated,
         },
         {
-          path: "/device-detail/:id",
+          path: "/device-list/:id/device-detail/:id",
           element: <PhoneSpesificationPage />,
           loader: redirectIfUnaunthenticated,
         },
