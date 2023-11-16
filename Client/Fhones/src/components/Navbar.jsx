@@ -24,9 +24,9 @@ export const Navbar = () => {
               >
                 Brands
               </Link>
-              <a href="" className="navbar-brand navbar-text">
+              <Link to={"/device-list"} href="" className="navbar-brand navbar-text">
                 Devices
-              </a>
+              </Link>
               <a href="" className="navbar-brand navbar-text">
                 Categories
               </a>
