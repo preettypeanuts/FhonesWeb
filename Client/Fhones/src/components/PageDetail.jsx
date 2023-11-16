@@ -1,4 +1,5 @@
 export const PageDetail = () => {
+  window.scrollTo(0, 0);
   return (
     <>
       {/* Content */}

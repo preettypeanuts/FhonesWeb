@@ -21,11 +21,11 @@ export const Login = () => {
   };
 
   const handleLogin = async (event) => {
-    event.preventdefault();
+    event.preventDefault();
     try {
       const { data } = await axios.post("http://localhost:3005/login", form);
-      localStorage.Authorization = data.token
-      navigate("/")
+      localStorage.Authorization = data.token;
+      navigate("/");
     } catch (error) {
       console.log(error);
     }
@@ -85,7 +85,7 @@ export const Login = () => {
                             Don't have an account?
                           </p>
                           <Link
-                          to={"/register"}
+                            to={"/register"}
                             type="button"
                             className="link-offset-3 link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
                           >
