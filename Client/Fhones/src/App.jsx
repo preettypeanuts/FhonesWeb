@@ -40,12 +40,12 @@ function App() {
           element: <Register />,
         },
         {
-          path: "/device-list",
+          path: "/device-list/:id",
           element: <PhoneModel/>,
           loader: redirectIfUnaunthenticated,
         },
         {
-          path: "/device-detail",
+          path: "/device-detail/:id",
           element: <PhoneSpesificationPage />,
           loader: redirectIfUnaunthenticated,
         },

@@ -1,8 +1,32 @@
 import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
+import axios from "axios";
+import { useEffect, useState } from "react";
+// import { redirect, useNavigate } from "react-router-dom";2
 export const PhoneModel = () => {
+  const [data, setData] = useState([]);
+
+  const { id } = useParams();
+
+  useEffect(() => {
+    async function receiveData() {
+      try {
+        const { data } = await axios.get(`
+          http://localhost:3005/brands/${id}/devices
+          `);
+        console.log(data, "datanya");
+        setData(data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    receiveData();
+  }, []);
+
   return (
     <>
+
       {/* Image */}
       <section
         className="vh-50 imageContainer"
@@ -15,34 +39,41 @@ export const PhoneModel = () => {
             className="img-fluid imageCategory"
             alt=""
           />
-          <p className="display-1 displayCustom customtext">Apple Phones</p>
+          <p className="display-1 displayCustom customtext">Phone Models</p>
         </div>
       </section>
       {/* Image */}
 
       {/* Image Model */}
-      <section className="vh-100" style={{ backgroundColor: "#ffffff" }}>
+      <section className="" style={{ backgroundColor: "#ffffff" }}>
         <div className="container">
           <div className="row">
+            {data.map(model => {
+              return(
+                <>
+                
             <div className="col-md-3 mb-3 cusRow">
               <div className="imageOuter d-flex flex-column align-items-center">
                 <Link
                   to={"/device-detail"}
                   href=""
                   className="link-underline-opacity-0link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover link-dark"
-                >
+                  >
                   <img
-                    src="https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg"
+                    src={model.img}
                     className="img-fluid"
                     alt="Gambar 1"
-                  />
+                    />
                   <div className="mt-2">
-                    <p className="mb-0">iPhone 15 Promax</p>
+                    <p className="mb-0">{model.name}</p>
                   </div>
                 </Link>
               </div>
             </div>
-            <div className="col-md-3 mb-3 cusRow">
+                    </>
+                  )
+                })}
+            {/* <div className="col-md-3 mb-3 cusRow">
               <div className="imageOuter d-flex flex-column align-items-center">
                 <img
                   src="https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-pro.jpg"
@@ -125,7 +156,7 @@ export const PhoneModel = () => {
                   <p className="mb-0">iPhone 15 Promax</p>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </section>

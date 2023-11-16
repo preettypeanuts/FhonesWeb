@@ -1,5 +1,28 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+
 export const PageDetail = () => {
   window.scrollTo(0, 0);
+  const [data, setData] = useState([]);
+
+  const { id } = useParams();
+
+  useEffect(() => {
+    async function receiveData() {
+      try {
+        const { data } = await axios.get(`
+          http://localhost:3005/brands/${id}/devices
+          `);
+        console.log(data, "datanya");
+        setData(data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    receiveData();
+  }, []);
+
   return (
     <>
       {/* Content */}

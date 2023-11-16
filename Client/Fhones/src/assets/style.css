@@ -456,12 +456,12 @@ body {
     background-image: url(https://images.unsplash.com/photo-1611648694964-a4cbd6ab1c70?q=80&w=2864&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
 }
 
-.rounded-3{
-    border-radius: 20px!important;
+.rounded-3 {
+    border-radius: 20px !important;
 }
 
 .gradient-custom-3 {
-    border: 1px black!important;
+    border: 1px black !important;
     background-size: cover;
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
@@ -470,11 +470,11 @@ body {
     background-image: url(https://images.unsplash.com/photo-1666238851883-1cdc90b547e4?q=80&w=2700&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
 }
 
-.customForm{
+.customForm {
     border-radius: 20px;
     border-color: rgb(0, 0, 0);
 }
 
-.topSpace{
-margin-top: 10vh!important;
+.topSpace {
+    margin-top: 10vh !important;
 }
