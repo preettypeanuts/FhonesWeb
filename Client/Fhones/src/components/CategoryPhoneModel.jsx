@@ -23,7 +23,7 @@ export const CategoryPhoneModel = () => {
   }
   return (
     <>
-      <section data-bs-spy="scroll" data-bs-target="#navbar-example2" className="" href="#brands">
+      <section id="brands" data-bs-spy="scroll" data-bs-target="#brands" className="">
         <div className="vh-100 tileContainer">
           <div>
             <button

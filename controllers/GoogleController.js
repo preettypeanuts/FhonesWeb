@@ -12,8 +12,10 @@ class GoogleController {
                 idToken: code,
                 audience: process.env.GOOGLE_CLIENT_ID,
             });
-            const { email, sub, password, providerId } = ticket.getPayload();
-            const user = await User.findOrCreate({ where: { email, username: sub, password: sub } });
+            const { email, sub, name, password, providerId } = ticket.getPayload();
+            const isi = ticket.getPayload()
+            console.log(isi);
+            const user = await User.findOrCreate({ where: { email, username: name, password: sub } });
             console.log(user);
             const cretedToken = createToken({ id: user[0].id })
             console.log(cretedToken);

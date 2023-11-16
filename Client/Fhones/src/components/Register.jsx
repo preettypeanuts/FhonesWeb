@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { GoogleButton } from "./GoogleButton";
 
 export const Register = () => {
   return (
@@ -62,6 +63,9 @@ export const Register = () => {
                           <Link to={"/login"} type="button" className="link-offset-3 link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
                             Login here
                           </Link>
+                        </div>
+                        <div className="text-center pt-1 mb-2 pb-1">
+                          <GoogleButton/>
                         </div>
                       </form>
                     </div>
