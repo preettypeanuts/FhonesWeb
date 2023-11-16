@@ -8,38 +8,6 @@ export const Footer = () => {
           style={{ backgroundColor: "#ffffffd9" }}
         >
           {/* Section: Social media */}
-          <section
-            className="d-flex justify-content-between p-4"
-            style={{ backgroundColor: "#ffffff6b" }}
-          >
-            {/* Left */}
-            <div className="me-5">
-              <span>Get connected with us on social networks:</span>
-            </div>
-            {/* Left */}
-            {/* Right */}
-            <div>
-              <a href="" className="text-black me-4">
-                <i className="fab fa-facebook-f" />
-              </a>
-              <a href="" className="text-black me-4">
-                <i className="fab fa-twitter" />
-              </a>
-              <a href="" className="text-black me-4">
-                <i className="fab fa-google" />
-              </a>
-              <a href="" className="text-black me-4">
-                <i className="fab fa-instagram" />
-              </a>
-              <a href="" className="text-black me-4">
-                <i className="fab fa-linkedin" />
-              </a>
-              <a href="" className="text-black me-4">
-                <i className="fab fa-github" />
-              </a>
-            </div>
-            {/* Right */}
-          </section>
           {/* Section: Social media */}
           {/* Section: Links  */}
           <section className="">

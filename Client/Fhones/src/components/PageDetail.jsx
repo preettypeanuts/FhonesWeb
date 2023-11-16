@@ -325,13 +325,13 @@ export const PageDetail = () => {
             <form action="">
               <div className="mb-3">
                 <textarea
-                  className="form-control"
+                  className="form-control border-black"
                   id="exampleFormControlTextarea1"
                   rows={3}
                   defaultValue={""}
                 />
               </div>
-              <button type="submit" className="btn btn-light">
+              <button type="submit" className="btn btn-outline-dark btnCustom">
                 {" "}
                 <box-icon
                   name="send"
@@ -362,7 +362,7 @@ export const PageDetail = () => {
                 defaultValue={""}
               />
             </div>
-            <button type="submit" className="btn btn-light">
+            <button type="submit" className="btn btn-outline-dark btnCustom">
               {" "}
               <box-icon
                 name="send"

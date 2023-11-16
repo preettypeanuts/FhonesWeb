@@ -2,11 +2,10 @@ export const Register = () => {
   return (
     <>
       <section
-        className="h-100 gradient-form registerContainer"
-        style={{ backgroundColor: "#eeeeee00" }}
-        data-bs-theme="dark"
+        style={{ backgroundColor: "#eeeeee00" , }}
+        data-bs-theme="light"
       >
-        <div className="container py-5 h-100">
+        <div className="container topSpace py-5">
           <div className="row d-flex justify-content-center align-items-center h-100">
             <div className="col-xl-10">
               <div className="card rounded-3 text-black">
@@ -26,15 +25,15 @@ export const Register = () => {
                           <input
                             type="email"
                             id="form2Example11"
-                            className="form-control"
+                            className="form-control customForm"
                             placeholder="username"
                           />
                         </div>
                         <div className="form-outline mb-4">
                           <input
-                            type="password"
+                            type="text"
                             id="form2Example22"
-                            className="form-control"
+                            className="form-control customForm"
                             placeholder="email address"
                           />
                         </div>
@@ -42,13 +41,13 @@ export const Register = () => {
                           <input
                             type="password"
                             id="form2Example22"
-                            className="form-control"
+                            className="form-control customForm"
                             placeholder="password"
                           />
                         </div>
                         <div className="text-center pt-1 mb-5 pb-1">
                           <button
-                            className="btn btn-secondary btnCustom"
+                            className="btn btn-outline-dark btnCustom"
                             type="button"
                           >
                             Register
@@ -58,9 +57,9 @@ export const Register = () => {
                           <p className="mb-0 me-2 loginText">
                             Don't have an account?
                           </p>
-                          <button type="button" className="btn">
+                          <a type="button" className="link-offset-3 link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
                             Create new
-                          </button>
+                          </a>
                         </div>
                       </form>
                     </div>
