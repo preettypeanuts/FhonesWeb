@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export const CategoryPhoneModel = () => {
   return (
     <>
@@ -164,6 +166,7 @@ export const CategoryPhoneModel = () => {
           <div className="row">
             <div className="col-md-3 mb-3 cusRow">
               <div className="imageOuter d-flex flex-column align-items-center">
+                <Link to={"/device-detail"} href="" className="link-underline-opacity-0link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover link-dark">
                 <img
                   src="https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg"
                   className="img-fluid"
@@ -172,6 +175,8 @@ export const CategoryPhoneModel = () => {
                 <div className="mt-2">
                   <p className="mb-0">iPhone 15 Promax</p>
                 </div>
+
+                </Link>
               </div>
             </div>
             <div className="col-md-3 mb-3 cusRow">
