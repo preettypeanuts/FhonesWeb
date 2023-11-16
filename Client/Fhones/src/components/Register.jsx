@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export const Register = () => {
   return (
     <>
@@ -55,11 +57,11 @@ export const Register = () => {
                         </div>
                         <div className="d-flex align-items-center justify-content-center pb-4 ">
                           <p className="mb-0 me-2 loginText">
-                            Don't have an account?
+                            Already have an account?
                           </p>
-                          <a type="button" className="link-offset-3 link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
-                            Create new
-                          </a>
+                          <Link to={"/login"} type="button" className="link-offset-3 link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
+                            Login here
+                          </Link>
                         </div>
                       </form>
                     </div>

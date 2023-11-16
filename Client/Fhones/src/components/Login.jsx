@@ -1,4 +1,36 @@
+import axios from "axios";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+
 export const Login = () => {
+  const navigate = useNavigate();
+
+  const [form, setForm] = useState({
+    email: "",
+    password: "",
+  });
+
+  const changeValue = (event) => {
+    const { name, value } = event.target;
+    setForm(() => {
+      return {
+        ...form,
+        [name]: value,
+      };
+    });
+  };
+
+  const handleLogin = async (event) => {
+    event.preventdefault();
+    try {
+      const { data } = await axios.post("http://localhost:3005/login", form);
+      localStorage.Authorization = data.token
+      navigate("/")
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
       <section
@@ -18,14 +50,15 @@ export const Login = () => {
                           Login to Fhones
                         </h4>
                       </div>
-                      <form>
+                      <form onSubmit={handleLogin}>
                         <p className="loginText">
                           Please login to your account
                         </p>
                         <div className="form-outline mb-4">
                           <input
                             type="email"
-                            id="form2Example11"
+                            name="email"
+                            onChange={changeValue}
                             className="form-control customForm"
                             placeholder="email address"
                           />
@@ -33,7 +66,8 @@ export const Login = () => {
                         <div className="form-outline mb-4">
                           <input
                             type="password"
-                            id="form2Example22"
+                            name="password"
+                            onChange={changeValue}
                             className="form-control customForm"
                             placeholder="password"
                           />
@@ -41,7 +75,7 @@ export const Login = () => {
                         <div className="text-center pt-1 mb-5 pb-1">
                           <button
                             className="btn btn-outline-dark btnCustom"
-                            type="button"
+                            type="sumbit"
                           >
                             Log in
                           </button>
@@ -50,9 +84,13 @@ export const Login = () => {
                           <p className="mb-0 me-2 loginText">
                             Don't have an account?
                           </p>
-                          <a type="button" className="link-offset-3 link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
-                            Create new
-                          </a>
+                          <Link
+                          to={"/register"}
+                            type="button"
+                            className="link-offset-3 link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+                          >
+                            Create new account
+                          </Link>
                         </div>
                       </form>
                     </div>

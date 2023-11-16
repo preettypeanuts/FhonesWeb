@@ -1,18 +1,31 @@
+import { Link, useNavigate } from "react-router-dom";
+import { CategoryPhoneModel } from "./CategoryPhoneModel";
+
 export const Navbar = () => {
+  const navigate = useNavigate();
+  function logout() {
+    localStorage.Authorization = "";
+    navigate("/");
+  }
+
   return (
     <>
       <header className="fixed-top" data-bs-theme="light">
         <nav className="navbar navBar">
           <div className="container-fluid">
-            <a className="navbar-brand mergePosition">
+            <Link to={"/"} className="navbar-brand mergePosition">
               <i className="bx bx-command bx-spin" /> Fhones
-            </a>
+            </Link>
             <div>
+              <Link
+                to={CategoryPhoneModel}
+                href=""
+                className="navbar-brand navbar-text"
+              >
+                Brands
+              </Link>
               <a href="" className="navbar-brand navbar-text">
-                Features
-              </a>
-              <a href="" className="navbar-brand navbar-text">
-                Brand
+                Devices
               </a>
               <a href="" className="navbar-brand navbar-text">
                 Categories
@@ -39,21 +52,20 @@ export const Navbar = () => {
               <ul className="navbar-nav">
                 <li className="nav-item dropdown">
                   <div className="dropdown-center">
-                    <a
+                    <Link
+                      to={"/login"}
                       className="btn nav-link"
-                      data-bs-toggle="dropdown"
-                      aria-expanded="false"
                     >
                       Login
-                    </a>
-                    <a
+                    </Link>
+                    <Link
+                      to={"/register"}
                       className="btn nav-link"
-                      data-bs-toggle="dropdown"
-                      aria-expanded="false"
                     >
                       Register
-                    </a>
+                    </Link>
                     <a
+                      onClick={logout}
                       className="btn nav-link"
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
