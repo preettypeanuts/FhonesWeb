@@ -24,7 +24,10 @@ export const Login = () => {
   const handleLogin = async (event) => {
     event.preventDefault();
     try {
-      const { data } = await axios.post("http://localhost:3005/login", form);
+      const { data } = await axios.post(
+        "https://fhones-web.murafly.my.id/login",
+        form
+      );
       localStorage.Authorization = data.token;
       navigate("/");
     } catch (error) {
@@ -91,11 +94,10 @@ export const Login = () => {
                             className="link-offset-3 link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
                           >
                             Create new account
-                          
                           </Link>
                         </div>
                         <div className="text-center pt-1 mb-2 pb-1">
-                          <GoogleButton/>
+                          <GoogleButton />
                         </div>
                       </form>
                     </div>

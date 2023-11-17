@@ -13,7 +13,7 @@ export const PhoneModel = () => {
     async function receiveData() {
       try {
         const { data } = await axios.get(`
-          http://localhost:3005/brands/${id}/devices
+        https://fhones-web.murafly.my.id/brands/${id}/devices
           `);
         console.log(data);
         setData(data);

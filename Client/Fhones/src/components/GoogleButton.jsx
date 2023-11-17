@@ -13,7 +13,7 @@ export const GoogleButton = () => {
               try {
                 console.log(credentialResponse.credential);
                 const { data } = await axios.post(
-                  "http://localhost:3005/auth/google/callback",
+                  "https://fhones-web.murafly.my.id/auth/google/callback",
                   {
                     code: credentialResponse.credential,
                   }

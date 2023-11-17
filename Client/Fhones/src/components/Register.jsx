@@ -26,7 +26,7 @@ export const Register = () => {
     event.preventDefault();
     try {
       const { data } = await axios.post(
-        `http://localhost:3005/register`,
+        `https://fhones-web.murafly.my.id/register`,
         form,
         {
           headers: {

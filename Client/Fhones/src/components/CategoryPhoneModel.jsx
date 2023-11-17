@@ -12,7 +12,7 @@ export const CategoryPhoneModel = () => {
   async function SendData(id) {
     try {
       const { data } = await axios.get(`
-        http://localhost:3005/brands/${id}/devices
+      https://fhones-web.murafly.my.id/${id}/devices
         `);
       console.log(data, "datanya");
       setData(data);
@@ -104,7 +104,7 @@ export const CategoryPhoneModel = () => {
             </button>
             <button
               onClick={() => {
-                navigate("/device-list/samsung-phones-9");
+                navigate("/device-list/nokia-phones-1");
               }}
               className="vh-50 oneTiles customBtn text-white"
             >
@@ -118,7 +118,7 @@ export const CategoryPhoneModel = () => {
           <div>
             <button
               onClick={() => {
-                navigate("/device-list/samsung-phones-9");
+                navigate("/device-list/nothing-phones-128");
               }}
               className="oneTiles customBtn text-white"
             >
@@ -130,7 +130,7 @@ export const CategoryPhoneModel = () => {
             </button>
             <button
               onClick={() => {
-                navigate("/device-list/samsung-phones-9");
+                navigate("/device-list/oneplus-phones-95");
               }}
               className="vh-50 oneTiles customBtn text-white"
             >
@@ -142,7 +142,7 @@ export const CategoryPhoneModel = () => {
             </button>
             <button
               onClick={() => {
-                navigate("/device-list/samsung-phones-9");
+                navigate("/device-list/oppo-phones-82");
               }}
               className="vh-50 oneTiles customBtn text-white"
             >
@@ -151,7 +151,7 @@ export const CategoryPhoneModel = () => {
             </button>
             <button
               onClick={() => {
-                navigate("/device-list/samsung-phones-9");
+                navigate("/device-list/vivo-phones-98");
               }}
               className="vh-50 oneTiles customBtn text-white"
             >
@@ -165,7 +165,7 @@ export const CategoryPhoneModel = () => {
           <div>
             <button
               onClick={() => {
-                navigate("/device-list/samsung-phones-9");
+                navigate("/device-list/realme-phones-118");
               }}
               className="oneTiles customBtn text-white"
             >
@@ -177,7 +177,7 @@ export const CategoryPhoneModel = () => {
             </button>
             <button
               onClick={() => {
-                navigate("/device-list/samsung-phones-9");
+                navigate("/device-list/sony-phones-7");
               }}
               className="vh-50 oneTiles customBtn text-white"
             >
@@ -189,7 +189,7 @@ export const CategoryPhoneModel = () => {
             </button>
             <button
               onClick={() => {
-                navigate("/device-list/samsung-phones-9");
+                navigate("/device-list/acer-phones-59");
               }}
               className="vh-50 oneTiles customBtn text-white"
             >
@@ -198,7 +198,7 @@ export const CategoryPhoneModel = () => {
             </button>
             <button
               onClick={() => {
-                navigate("/device-list/samsung-phones-9");
+                navigate("/device-list/lenovo-phones-73");
               }}
               className="vh-50 oneTiles customBtn text-white"
             >
@@ -212,7 +212,7 @@ export const CategoryPhoneModel = () => {
           <div>
             <button
               onClick={() => {
-                navigate("/device-list/samsung-phones-9");
+                navigate("/device-list/honor-phones-121");
               }}
               className="oneTiles customBtn text-white"
             >
@@ -224,7 +224,7 @@ export const CategoryPhoneModel = () => {
             </button>
             <button
               onClick={() => {
-                navigate("/device-list/samsung-phones-9");
+                navigate("/device-list/razer-phones-117");
               }}
               className="vh-50 oneTiles customBtn text-white"
             >
@@ -236,16 +236,16 @@ export const CategoryPhoneModel = () => {
             </button>
             <button
               onClick={() => {
-                navigate("/device-list/samsung-phones-9");
+                navigate("/device-list/sony_ericsson-phones-19");
               }}
               className="vh-50 oneTiles customBtn text-white"
             >
               <box-icon name="bolt-circle" type="solid" color="#ffffff" />
-              Samsung
+              Sony Ericsson
             </button>
             <button
               onClick={() => {
-                navigate("/device-list/samsung-phones-9");
+                navigate("/device-list/huawei-phones-58");
               }}
               className="vh-50 oneTiles customBtn text-white"
             >

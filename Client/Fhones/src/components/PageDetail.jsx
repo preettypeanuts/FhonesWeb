@@ -30,7 +30,7 @@ export const PageDetail = () => {
     try {
       const { data } = await axios.post(
         `
-      http://localhost:3005/devices/${id}/comments
+        https://fhones-web.murafly.my.id/devices/${id}/comments
       `,
         form,
         {
@@ -50,7 +50,7 @@ export const PageDetail = () => {
     async function receiveData() {
       try {
         const { data } = await axios.get(`
-          http://localhost:3005/brands/${id}/detail
+        https://fhones-web.murafly.my.id/brands/${id}/detail
           `);
         // console.log(data.detailSpec[6].specifications[0].value);
         // console.log(data.detailSpec);
@@ -69,7 +69,7 @@ export const PageDetail = () => {
       try {
         const { data } = await axios.get(
           `
-        http://localhost:3005/devices/${id}/comments 
+          https://fhones-web.murafly.my.id/devices/${id}/comments 
         `,
           {
             headers: {
@@ -118,7 +118,7 @@ export const PageDetail = () => {
       try {
         const { data } = await axios.delete(
           `
-        http://localhost:3005/devices/${id}/comments 
+          https://fhones-web.murafly.my.id/devices/${id}/comments 
         `,
           {
             headers: {
