@@ -9,7 +9,6 @@ const UserController = require('../controllers/UserController')
 const LikeController = require('../controllers/LikeController')
 const CommentController = require('../controllers/CommentController')
 const GoogleController = require('../controllers/GoogleController')
-const YouTubeController = require('../controllers/YouTubeController')
 
 const middleware = (req, res, next) => { next() }
 router.use(middleware)
@@ -29,8 +28,8 @@ router.post('/auth/google/callback', GoogleController.login)
 //User endpoint
 router.post('/login', UserController.login)
 
-router.use(authentication)
 router.post('/register', UserController.register)
+router.use(authentication)
 
 // Likes
 router.patch('/devices/:id/likes', LikeController.increaseLike)
@@ -39,9 +38,6 @@ router.patch('/devices/:id/likes', LikeController.increaseLike)
 router.get('/devices/:id/comments', CommentController.readComment)
 router.post('/devices/:id/comments', CommentController.addComment)
 router.delete('/devices/:id/comments', CommentController.deleteComment)
-
-// YouTube API Search
-router.get('youtube-v2.p.rapidapi.com/search/:id', YouTubeController.getVideo)
 
 
 // router.use(authentication)

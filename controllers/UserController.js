@@ -6,6 +6,9 @@ const { User } = require('../models')
 class UserController {
     static async login(req, res, next) {
         try {
+            console.log('====================================');
+            console.log('error');
+            console.log('====================================');
             const { email, password } = req.body
             if (!email) throw { name: "InvalidInput", field: "email" }
 
@@ -20,6 +23,9 @@ class UserController {
             if (!compared) throw { name: "Unauntenticated" }
 
             const token = createToken({ id: user.id })
+            console.log('====================================');
+            console.log(token, "tokennya");
+            console.log('====================================');
             res.status(200).json({ message: `Succes login!`, token: `${token}` })
         } catch (error) {
             next(error)
@@ -28,6 +34,9 @@ class UserController {
     static async register(req, res, next) {
         try {
             const { username, email, password } = req.body
+            console.log('====================================');
+            console.log("masukk");
+            console.log('====================================');
 
             if (!username) throw { name: "InvalidInput", field: "username" }
             if (!email) throw { name: "InvalidInput", field: "email" }
