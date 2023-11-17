@@ -2,12 +2,15 @@ import axios from "axios";
 // import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+// import YoutubeAPIExample from "./YoutubeApi";
+import NewsComponent from "./NewsApi";
 
 export const PageDetail = () => {
   const [form, setForm] = useState({
     comment: "",
   });
   const [comment, setComment] = useState([]);
+  const [video, setVideo] = useState({});
   const [data, setData] = useState([]);
   const { id } = useParams();
   // console.log(id, 'iiiii');
@@ -22,8 +25,8 @@ export const PageDetail = () => {
     console.log(name, value);
   };
   // console.log(form);
-  const handleValue = async (event) => {
-    event.preventDefault();
+  const handleValue = async () => {
+    // event.preventDefault();
     try {
       const { data } = await axios.post(
         `
@@ -63,7 +66,6 @@ export const PageDetail = () => {
 
   useEffect(() => {
     async function getComment() {
-      console.log(id, "axxxxx");
       try {
         const { data } = await axios.get(
           `
@@ -83,6 +85,31 @@ export const PageDetail = () => {
     }
     getComment();
   }, []);
+
+  useEffect(() => {
+    console.log(id, "idnya");
+    async function getVideo() {
+      try {
+        const response = await axios.request({
+          url: `https://youtube-v2.p.rapidapi.com/video/search?query=${id}`,
+          method: "GET",
+          params: {
+            query: id,
+          },
+        });
+        console.log(response.data, "respons");
+        setVideo(response.data); // Menggunakan response.data untuk mengatur data video
+
+        // Mengatur nilai videoSrc dengan URL video yang diperoleh dari respons
+        setVideoSrc(`https://www.youtube.com/embed/${response}`);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    getVideo();
+  }, [id]);
+
+  const [videoSrc, setVideoSrc] = useState("");
 
   return (
     <>
@@ -314,64 +341,7 @@ export const PageDetail = () => {
       </div>
 
       {/*  */}
-      {/* Comments */}
       <section>
-        <div className="container my-5 py-5">
-          <div className="row d-flex justify-content-center">
-            <div className="col-md-12 col-lg-10">
-              <div className="card text-dark rounded-4">
-                <div className="card-body p-4">
-                  <h4 className="mb-0">Recent comments</h4>
-                  <p className="fw-light mb-4 pb-2">
-                    Latest Comments section by users
-                  </p>
-                  <div className="card-body p-4">
-                    <div className="d-flex flex-start">
-                      <img
-                        className="rounded-circle shadow-1-strong me-3"
-                        src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(23).webp"
-                        alt="avatar"
-                        width={60}
-                        height={60}
-                      />
-                      <div>
-                        {comment?.map((el) => {
-                          return (
-                            <>
-                              <h6 className="fw-bold mb-1">
-                                {el?.User.username}
-                              </h6>
-                              <div className="d-flex align-items-center mb-3">
-                                <p className="mb-0">
-                                  March 07, 2021
-                                  <span className="badge bg-primary">
-                                    Pending
-                                  </span>
-                                </p>
-                                <a href="#!" className="link-muted">
-                                  <i className="fas fa-pencil-alt ms-2" />
-                                </a>
-                                <a href="#!" className="link-muted">
-                                  <i className="fas fa-redo-alt ms-2" />
-                                </a>
-                                <a href="#!" className="link-muted">
-                                  <i className="fas fa-heart ms-2" />
-                                </a>
-                              </div>
-                              <p className="mb-0">{el?.comment}</p>
-                              <hr className="my-0" />
-                            </>
-                          );
-                        })}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        {/* Add Comment */}
         <div className="commentSections">
           <div
             className="card-body cardBodyComment"
@@ -413,15 +383,33 @@ export const PageDetail = () => {
           <iframe
             width="1007"
             height="615"
-            src="https://www.youtube.com/embed/ly36kn0ug4k?si=idkL4xhaHtfSFQV7"
+            src="https://www.youtube.com/embed/bx1rXf-fsNM?si=q8KxYCJur3GqkzXr"
             title="YouTube video player"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
+            allowFullScreen
           ></iframe>
+
+          <form>
+            <div className="mb-3">
+              <label
+                htmlFor="exampleInputEmail1"
+                className="form-label"
+              ></label>
+              <input
+                type="email"
+                className="form-control"
+                id="exampleInputEmail1"
+                aria-describedby="emailHelp"
+              />
+            </div>
+            <button type="submit" className="btn btn-outline-dark btnCustom">
+              Search
+            </button>
+          </form>
         </div>
       </div>
-
+      <NewsComponent />
       {/* YT */}
     </>
   );

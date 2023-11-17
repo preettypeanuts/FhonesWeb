@@ -14,7 +14,7 @@ export const Banner = () => {
             lifestyle. From top-tier smartphones to the latest in smart tech,
             discover innovation for the modern era.
           </p>
-          <a href="" className="btn btn-outline-dark btnCustom">
+          <a href="#brands" className="btn btn-outline-dark btnCustom">
             Get Started
           </a>
         </div>
