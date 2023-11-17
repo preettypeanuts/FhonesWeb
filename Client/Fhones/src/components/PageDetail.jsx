@@ -1,17 +1,123 @@
+import axios from "axios";
+// import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+// import YoutubeAPIExample from "./YoutubeApi";
+import NewsComponent from "./NewsApi";
+
 export const PageDetail = () => {
-  window.scrollTo(0, 0);
+  const [form, setForm] = useState({
+    comment: "",
+  });
+  const [comment, setComment] = useState([]);
+  const [video, setVideo] = useState({});
+  const [data, setData] = useState([]);
+  const { id } = useParams();
+  // console.log(id, 'iiiii');
+  const fillValue = (event) => {
+    const { name, value } = event.target;
+    setForm(() => {
+      return {
+        ...form,
+        [name]: value,
+      };
+    });
+    console.log(name, value);
+  };
+  // console.log(form);
+  const handleValue = async () => {
+    // event.preventDefault();
+    try {
+      const { data } = await axios.post(
+        `
+      http://localhost:3005/devices/${id}/comments
+      `,
+        form,
+        {
+          headers: {
+            Authorization: "Bearer " + localStorage.Authorization,
+          },
+        }
+      );
+      setForm(data);
+      console.log(data, "datacommnet");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    async function receiveData() {
+      try {
+        const { data } = await axios.get(`
+          http://localhost:3005/brands/${id}/detail
+          `);
+        // console.log(data.detailSpec[6].specifications[0].value);
+        // console.log(data.detailSpec);
+
+        //  data.detailSpec[2].specifications[0].value = dimensions
+        setData(data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    receiveData();
+  }, []);
+
+  useEffect(() => {
+    async function getComment() {
+      try {
+        const { data } = await axios.get(
+          `
+        http://localhost:3005/devices/${id}/comments 
+        `,
+          {
+            headers: {
+              Authorization: "Bearer " + localStorage.Authorization,
+            },
+          }
+        );
+        console.log(data);
+        setComment(data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    getComment();
+  }, []);
+
+  useEffect(() => {
+    console.log(id, "idnya");
+    async function getVideo() {
+      try {
+        const response = await axios.request({
+          url: `https://youtube-v2.p.rapidapi.com/video/search?query=${id}`,
+          method: "GET",
+          params: {
+            query: id,
+          },
+        });
+        console.log(response.data, "respons");
+        setVideo(response.data); // Menggunakan response.data untuk mengatur data video
+
+        // Mengatur nilai videoSrc dengan URL video yang diperoleh dari respons
+        setVideoSrc(`https://www.youtube.com/embed/${response}`);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    getVideo();
+  }, [id]);
+
+  const [videoSrc, setVideoSrc] = useState("");
+
   return (
     <>
-      {/* Content */}
       <div className="artContainer">
         <div className="overflowCard">
-          <img
-            className="phoneImg"
-            src="https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg"
-            alt="..."
-          />
+          <img className="phoneImg" src={data.img} alt="phone" />
           <div className="teksPosition">
-            <p className="display-1">iPhone 15 Promax</p>
+            <p className="display-1">{data.name}</p>
             <hr />
           </div>
         </div>
@@ -47,25 +153,37 @@ export const PageDetail = () => {
                   <th scope="col" style={{ paddingRight: 20 }}>
                     <box-icon name="mobile" />
                   </th>
-                  <td scope="col">June, 21 2001</td>
+                  <td scope="col">
+                    {data.detailSpec &&
+                      data.detailSpec[1].specifications[0].value}
+                  </td>
                 </tr>
                 <tr>
                   <th scope="col">
                     <box-icon type="solid" name="mobile-vibration" />
                   </th>
-                  <td scope="col">221g, 8.3mm thickness</td>
+                  <td scope="col">
+                    {data.detailSpec &&
+                      data.detailSpec[2].specifications[0].value}
+                  </td>
                 </tr>
                 <tr>
                   <th scope="col">
                     <box-icon name="hive" />
                   </th>
-                  <td scope="col">iOS 17, up to iOS 17.1.1</td>
+                  <td scope="col">
+                    {data.detailSpec &&
+                      data.detailSpec[4].specifications[0].value}
+                  </td>
                 </tr>
                 <tr>
                   <th scope="col">
                     <box-icon type="solid" name="category-alt" />
                   </th>
-                  <td scope="col">256GB/512GB/1TB storage, no card slot</td>
+                  <td scope="col">
+                    {data.detailSpec &&
+                      data.detailSpec[5].specifications[0].value}
+                  </td>
                 </tr>
               </thead>
             </table>
@@ -74,7 +192,10 @@ export const PageDetail = () => {
             className="card-body cardBody"
             style={{ padding: "30px 30px 30px 30px" }}
           >
-            <h1 className="card-text">6,7" inch</h1>
+            <h1 className="card-text">
+              {data.detailSpec &&
+                data.detailSpec[3].specifications[1].value.split(",")[0].trim()}
+            </h1>
             <h1>
               <box-icon name="mobile-alt" />
             </h1>
@@ -86,7 +207,10 @@ export const PageDetail = () => {
             className="card-body cardBody"
             style={{ padding: "30px 30px 30px 30px" }}
           >
-            <h1 className="card-text">48 MP</h1>
+            <h1 className="card-text">
+              {data.detailSpec &&
+                data.detailSpec[6].specifications[0].value.split(",")[0].trim()}
+            </h1>
             <h1>
               <box-icon name="camera" type="solid" />
             </h1>
@@ -96,17 +220,25 @@ export const PageDetail = () => {
             className="card-body cardBody"
             style={{ padding: "30px 30px 30px 30px" }}
           >
-            <h1 className="card-text">8GB RAM</h1>
+            <h1 className="card-text">
+              {data.detailSpec &&
+                data.detailSpec[5].specifications[1].value.split(",")[0].trim()}
+            </h1>
             <h1>
               <box-icon type="solid" name="memory-card" />
             </h1>
-            <h6 className="card-subtitle mb-2 text-body-secondary">RAM</h6>
+            <h6 className="card-subtitle mb-2 text-body-secondary">Storage</h6>
           </div>
           <div
             className="card-body cardBody"
             style={{ padding: "30px 30px 30px 30px" }}
           >
-            <h1 className="card-text">4441 mAh</h1>
+            <h1 className="card-text">
+              {data.detailSpec &&
+                data.detailSpec[11].specifications[0].value
+                  .split(",")[0]
+                  .trim()}
+            </h1>
             <h1>
               <box-icon name="battery" type="solid" />
             </h1>
@@ -122,6 +254,7 @@ export const PageDetail = () => {
         </h1>
         <hr />
         <div className="tableInner table table-borderless">
+          <p>{data.descriptions}</p>
           <table>
             <tbody>
               <tr>
@@ -152,163 +285,52 @@ export const PageDetail = () => {
           </table>
         </div>
       </div>
+
       {/* Table Content */}
-      {/* Comments */}
-      <section>
-        <div className="container my-5 py-5">
-          <div className="row d-flex justify-content-center">
-            <div className="col-md-12 col-lg-10">
-              <div className="card text-dark rounded-4">
-                <div className="card-body p-4">
-                  <h4 className="mb-0">Recent comments</h4>
-                  <p className="fw-light mb-4 pb-2">
-                    Latest Comments section by users
-                  </p>
-                  <div className="d-flex flex-start">
-                    <img
-                      className="rounded-circle shadow-1-strong me-3"
-                      src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(23).webp"
-                      alt="avatar"
-                      width={60}
-                      height={60}
-                    />
-                    <div>
-                      <h6 className="fw-bold mb-1">Maggie Marsh</h6>
-                      <div className="d-flex align-items-center mb-3">
-                        <p className="mb-0">
-                          March 07, 2021
-                          <span className="badge bg-primary">Pending</span>
-                        </p>
-                        <a href="#!" className="link-muted">
-                          <i className="fas fa-pencil-alt ms-2" />
-                        </a>
-                        <a href="#!" className="link-muted">
-                          <i className="fas fa-redo-alt ms-2" />
-                        </a>
-                        <a href="#!" className="link-muted">
-                          <i className="fas fa-heart ms-2" />
-                        </a>
-                      </div>
-                      <p className="mb-0">
-                        Lorem Ipsum is simply dummy text of the printing and
-                        typesetting industry. Lorem Ipsum has been the
-                        industry's standard dummy text ever since the 1500s,
-                        when an unknown printer took a galley of type and
-                        scrambled it.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <hr className="my-0" />
+
+      {/*  */}
+      <div className="container my-5 py-5">
+        <div className="row d-flex justify-content-center">
+          <div className="col-md-12 col-lg-10">
+            <div className="card text-dark rounded-4">
+              <div className="card-body p-4">
+                <h4 className="mb-0">Recent comments</h4>
+                <p className="fw-light mb-4 pb-2">
+                  Latest Comments section by users
+                </p>
                 <div className="card-body p-4">
                   <div className="d-flex flex-start">
-                    <img
-                      className="rounded-circle shadow-1-strong me-3"
-                      src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(26).webp"
-                      alt="avatar"
-                      width={60}
-                      height={60}
-                    />
                     <div>
-                      <h6 className="fw-bold mb-1">Lara Stewart</h6>
-                      <div className="d-flex align-items-center mb-3">
-                        <p className="mb-0">
-                          March 15, 2021
-                          <span className="badge bg-success">Approved</span>
-                        </p>
-                        <a href="#!" className="link-muted">
-                          <i className="fas fa-pencil-alt ms-2" />
-                        </a>
-                        <a href="#!" className="text-success">
-                          <i className="fas fa-redo-alt ms-2" />
-                        </a>
-                        <a href="#!" className="link-danger">
-                          <i className="fas fa-heart ms-2" />
-                        </a>
-                      </div>
-                      <p className="mb-0">
-                        Contrary to popular belief, Lorem Ipsum is not simply
-                        random text. It has roots in a piece of classical Latin
-                        literature from 45 BC, making it over 2000 years old.
-                        Richard McClintock, a Latin professor at Hampden-Sydney
-                        College in Virginia, looked up one of the more obscure
-                        Latin words, consectetur, from a Lorem Ipsum passage,
-                        and going through the cites.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <hr className="my-0" style={{ height: 1 }} />
-                <div className="card-body p-4">
-                  <div className="d-flex flex-start">
-                    <img
-                      className="rounded-circle shadow-1-strong me-3"
-                      src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(33).webp"
-                      alt="avatar"
-                      width={60}
-                      height={60}
-                    />
-                    <div>
-                      <h6 className="fw-bold mb-1">Alexa Bennett</h6>
-                      <div className="d-flex align-items-center mb-3">
-                        <p className="mb-0">
-                          March 24, 2021
-                          <span className="badge bg-danger">Rejected</span>
-                        </p>
-                        <a href="#!" className="link-muted">
-                          <i className="fas fa-pencil-alt ms-2" />
-                        </a>
-                        <a href="#!" className="link-muted">
-                          <i className="fas fa-redo-alt ms-2" />
-                        </a>
-                        <a href="#!" className="link-muted">
-                          <i className="fas fa-heart ms-2" />
-                        </a>
-                      </div>
-                      <p className="mb-0">
-                        There are many variations of passages of Lorem Ipsum
-                        available, but the majority have suffered alteration in
-                        some form, by injected humour, or randomised words which
-                        don't look even slightly believable. If you are going to
-                        use a passage of Lorem Ipsum, you need to be sure.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <hr />
-                <div className="card-body p-4">
-                  <div className="d-flex flex-start">
-                    <img
-                      className="rounded-circle shadow-1-strong me-3"
-                      src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(24).webp"
-                      alt="avatar"
-                      width={60}
-                      height={60}
-                    />
-                    <div>
-                      <h6 className="fw-bold mb-1">Betty Walker</h6>
-                      <div className="d-flex align-items-center mb-3">
-                        <p className="mb-0">
-                          March 30, 2021
-                          <span className="badge bg-primary">Pending</span>
-                        </p>
-                        <a href="#!" className="link-muted">
-                          <i className="fas fa-pencil-alt ms-2" />
-                        </a>
-                        <a href="#!" className="link-muted">
-                          <i className="fas fa-redo-alt ms-2" />
-                        </a>
-                        <a href="#!" className="link-muted">
-                          <i className="fas fa-heart ms-2" />
-                        </a>
-                      </div>
-                      <p className="mb-0">
-                        It uses a dictionary of over 200 Latin words, combined
-                        with a handful of model sentence structures, to generate
-                        Lorem Ipsum which looks reasonable. The generated Lorem
-                        Ipsum is therefore always free from repetition, injected
-                        humour, or non-characteristic words etc.
-                      </p>
+                      {comment?.map((el) => {
+                        return (
+                          <>
+                            <h6 className="fw-bold mb-1">
+                              {el?.User.username}
+                            </h6>
+                            <div className="d-flex align-items-center mb-3">
+                              <p className="mb-0">
+                                {new Date(el.createdAt).toLocaleDateString(
+                                  "ID-Id"
+                                )}
+                                <span className="badge bg-danger">
+                                  {el.deviceId}
+                                </span>
+                              </p>
+                              <a href="#!" className="link-muted">
+                                <i className="fas fa-pencil-alt ms-2" />
+                              </a>
+                              <a href="#!" className="link-muted">
+                                <i className="fas fa-redo-alt ms-2" />
+                              </a>
+                              <a href="#!" className="link-muted">
+                                <i className="fas fa-heart ms-2" />
+                              </a>
+                            </div>
+                            <p className="mb-0">{el.comment}</p>
+                            <hr style={{ minWidth: "111vh" }} />
+                          </>
+                        );
+                      })}
                     </div>
                   </div>
                 </div>
@@ -316,17 +338,22 @@ export const PageDetail = () => {
             </div>
           </div>
         </div>
-        {/* Add Comment */}
+      </div>
+
+      {/*  */}
+      <section>
         <div className="commentSections">
           <div
             className="card-body cardBodyComment"
             style={{ padding: "30px 30px 30px 30px" }}
           >
             <h4 className="card-text">Put your comment here...</h4>
-            <form action="">
+            <form onSubmit={handleValue}>
               <div className="mb-3">
                 <textarea
-                  className="form-control border-black"
+                  onChange={fillValue}
+                  name="comment"
+                  className="form-control"
                   id="exampleFormControlTextarea1"
                   rows={3}
                   defaultValue={""}
@@ -345,37 +372,45 @@ export const PageDetail = () => {
           </div>
         </div>
       </section>
-      {/* Add Comment */}
       {/* Comments */}
-      {/* Add Comment */}
-      <div className="commentSections" style={{ backgroundColor: "white" }}>
+
+      {/* YT */}
+      <div className="commentSections">
         <div
           className="card-body cardBodyComment"
           style={{ padding: "30px 30px 30px 30px" }}
         >
-          <h4 className="card-text">Watch unboxing video here...</h4>
-          <form action="">
+          <iframe
+            width="1007"
+            height="615"
+            src="https://www.youtube.com/embed/bx1rXf-fsNM?si=q8KxYCJur3GqkzXr"
+            title="YouTube video player"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+          ></iframe>
+
+          <form>
             <div className="mb-3">
-              <textarea
+              <label
+                htmlFor="exampleInputEmail1"
+                className="form-label"
+              ></label>
+              <input
+                type="email"
                 className="form-control"
-                id="exampleFormControlTextarea1"
-                rows={3}
-                defaultValue={""}
+                id="exampleInputEmail1"
+                aria-describedby="emailHelp"
               />
             </div>
             <button type="submit" className="btn btn-outline-dark btnCustom">
-              {" "}
-              <box-icon
-                name="send"
-                type="solid"
-                style={{ verticalAlign: "middle", marginRight: 10 }}
-              />
-              Submit
+              Search
             </button>
           </form>
         </div>
       </div>
-      {/* Add Comment */}
+      <NewsComponent />
+      {/* YT */}
     </>
   );
 };

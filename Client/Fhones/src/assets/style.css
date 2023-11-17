@@ -6,7 +6,7 @@
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
     scroll-behavior: smooth;
-    scroll-behavior: 2rem;
+    scroll-behavior: 10rem;
     transition: 0.6s ease-in-out;
 }
 
@@ -255,14 +255,13 @@ body {
 }
 
 .tileContainer {
-    /* margin: 10vh 10vh 10vh 10vh; */
-    margin-top: 10vh;
     margin-left: 20vh;
     margin-right: 20vh;
     display: flex;
-    align-items: first baseline;
-    justify-content: space-around;
-    /* background-color: rgb(0, 0, 0); */
+    justify-content: center;
+    align-items: center!important;
+justify-content: space-between;
+
 }
 
 .oneTiles {
@@ -456,12 +455,12 @@ body {
     background-image: url(https://images.unsplash.com/photo-1611648694964-a4cbd6ab1c70?q=80&w=2864&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
 }
 
-.rounded-3{
-    border-radius: 20px!important;
+.rounded-3 {
+    border-radius: 20px !important;
 }
 
 .gradient-custom-3 {
-    border: 1px black!important;
+    border: 1px black !important;
     background-size: cover;
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
@@ -470,11 +469,48 @@ body {
     background-image: url(https://images.unsplash.com/photo-1666238851883-1cdc90b547e4?q=80&w=2700&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
 }
 
-.customForm{
+.customForm {
     border-radius: 20px;
     border-color: rgb(0, 0, 0);
 }
 
-.topSpace{
-margin-top: 10vh!important;
+.topSpace {
+    margin-top: 10vh !important;
+}
+
+.searchContainer {
+    justify-content: space-around;
+
+    align-items: center !important;
+    text-align: center;
+    /* padding: 10vh 10vh 10vh 10vh; */
+    margin: 20vh 20vh 20vh 20vh;
+}
+
+.searchValue {
+    margin-bottom: 10vh;
+}
+
+.customForm2 {
+    border-radius: 40px !important;
+    border-color: rgb(0, 0, 0);
+}
+
+.btnCustom2 {
+    padding-left: 10px !important;
+    border-radius: 20px !important;
+    /* align-items: center;
+    text-align: center; */
+    width: 20vh;
+    height: 40px;
+}
+
+.searchForm {
+    display: flex;
+}
+
+.searchResults {
+    width: 1000vh;
+    justify-content: space-between;
+    max-width: fit-content;
 }

@@ -8,6 +8,7 @@ import LandingPage from "./pages/LandingPage";
 import PhoneSpesificationPage from "./pages/PhoneSpesificationPage";
 import { Login } from "./components/Login";
 import { Register } from "./components/Register";
+import { PhoneModel } from "./components/PhoneModel";
 
 function App() {
   const redirectIfUnaunthenticated = () => {
@@ -39,7 +40,12 @@ function App() {
           element: <Register />,
         },
         {
-          path: "/device-detail",
+          path: "/device-list/:id",
+          element: <PhoneModel/>,
+          loader: redirectIfUnaunthenticated,
+        },
+        {
+          path: "/device-list/:id/device-detail/:id",
           element: <PhoneSpesificationPage />,
           loader: redirectIfUnaunthenticated,
         },

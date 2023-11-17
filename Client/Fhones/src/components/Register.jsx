@@ -1,10 +1,51 @@
 import { Link } from "react-router-dom";
+import { GoogleButton } from "./GoogleButton";
+import axios from "axios";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const Register = () => {
+  const navigate = useNavigate();
+  const [form, setForm] = useState({
+    username: "",
+    email: "",
+    password: "",
+  });
+
+  const setValue = (event) => {
+    const { name, value } = event.target;
+    setForm(() => {
+      return {
+        ...form,
+        [name]: value,
+      };
+    });
+  };
+
+  const handleRegister = async (event) => {
+    event.preventDefault();
+    try {
+      const { data } = await axios.post(
+        `http://localhost:3005/register`,
+        form,
+        {
+          headers: {
+            Authorization: "Bearer " + localStorage.Authorization,
+          },
+        }
+      );
+      console.log(data, "RegisterData");
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
       <section
-        style={{ backgroundColor: "#eeeeee00" , }}
+        className="h-100 gradient-form loginContainer"
+        style={{ backgroundColor: "#eeeeee00" }}
         data-bs-theme="light"
       >
         <div className="container topSpace py-5">
@@ -19,13 +60,15 @@ export const Register = () => {
                           Register to Fhones
                         </h4>
                       </div>
-                      <form>
+                      <form onSubmit={handleRegister}>
                         <p className="loginText">
                           Please Register to your account
                         </p>
                         <div className="form-outline mb-4">
                           <input
-                            type="email"
+                            type="text"
+                            name="username"
+                            onChange={setValue}
                             id="form2Example11"
                             className="form-control customForm"
                             placeholder="username"
@@ -33,6 +76,8 @@ export const Register = () => {
                         </div>
                         <div className="form-outline mb-4">
                           <input
+                            name="email"
+                            onChange={setValue}
                             type="text"
                             id="form2Example22"
                             className="form-control customForm"
@@ -41,6 +86,8 @@ export const Register = () => {
                         </div>
                         <div className="form-outline mb-4">
                           <input
+                            name="password"
+                            onChange={setValue}
                             type="password"
                             id="form2Example22"
                             className="form-control customForm"
@@ -50,7 +97,7 @@ export const Register = () => {
                         <div className="text-center pt-1 mb-5 pb-1">
                           <button
                             className="btn btn-outline-dark btnCustom"
-                            type="button"
+                            type="sumbit"
                           >
                             Register
                           </button>
@@ -59,9 +106,16 @@ export const Register = () => {
                           <p className="mb-0 me-2 loginText">
                             Already have an account?
                           </p>
-                          <Link to={"/login"} type="button" className="link-offset-3 link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
+                          <Link
+                            to={"/login"}
+                            type="button"
+                            className="link-offset-3 link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+                          >
                             Login here
                           </Link>
+                        </div>
+                        <div className="text-center pt-1 mb-2 pb-1">
+                          <GoogleButton />
                         </div>
                       </form>
                     </div>

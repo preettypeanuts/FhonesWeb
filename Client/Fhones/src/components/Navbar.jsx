@@ -5,27 +5,26 @@ export const Navbar = () => {
   const navigate = useNavigate();
   function logout() {
     localStorage.Authorization = "";
-    navigate("/");
+    navigate("/login");
   }
 
   return (
     <>
       <header className="fixed-top" data-bs-theme="light">
-        <nav className="navbar navBar">
+        <nav id="navbarNavigate" className="navbar navBar">
           <div className="container-fluid">
             <Link to={"/"} className="navbar-brand mergePosition">
               <i className="bx bx-command bx-spin" /> Fhones
             </Link>
             <div>
-              <Link
-                to={CategoryPhoneModel}
-                href=""
+              <a
+                href="#brands"
                 className="navbar-brand navbar-text"
               >
                 Brands
-              </Link>
-              <a href="" className="navbar-brand navbar-text">
-                Devices
+              </a>
+              <a href="#search" className="navbar-brand navbar-text">
+                Search Wallpapers
               </a>
               <a href="" className="navbar-brand navbar-text">
                 Categories
