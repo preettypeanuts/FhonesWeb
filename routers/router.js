@@ -38,6 +38,7 @@ router.patch('/devices/:id/likes', LikeController.increaseLike)
 //Comments
 router.get('/devices/:id/comments', CommentController.readComment)
 router.post('/devices/:id/comments', CommentController.addComment)
+router.delete('/devices/:id/comments', CommentController.deleteComment)
 
 // YouTube API Search
 router.get('youtube-v2.p.rapidapi.com/search/:id', YouTubeController.getVideo)

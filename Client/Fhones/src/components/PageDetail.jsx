@@ -110,6 +110,31 @@ export const PageDetail = () => {
   }, [id]);
 
   const [videoSrc, setVideoSrc] = useState("");
+  
+  const [destroy, setDestroy] = useState("");
+
+  useEffect(() => {
+    async function deleteComment() {
+      try {
+        const { data } = await axios.delete(
+          `
+        http://localhost:3005/devices/${id}/comments 
+        `,
+          {
+            headers: {
+              Authorization: "Bearer " + localStorage.Authorization,
+            },
+          }
+        );
+        setDestroy(data)
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    deleteComment()
+  }, []);
+
+
 
   return (
     <>
