@@ -8,6 +8,7 @@ const DataController = require('../controllers/DataController')
 const UserController = require('../controllers/UserController')
 const LikeController = require('../controllers/LikeController')
 const CommentController = require('../controllers/CommentController')
+const GoogleController = require('../controllers/GoogleController')
 
 const middleware = (req, res, next) => { next() }
 router.use(middleware)
@@ -21,20 +22,22 @@ router.get('/brands/:id/devices', DataController.brandProductList)
 router.get('/brands/:id/detail', DataController.deviceDetail)
 router.get('/brands/:id/search', DataController.searchDevice)
 
+// Google Login
+router.post('/auth/google/callback', GoogleController.login)
+
 //User endpoint
 router.post('/login', UserController.login)
-
-router.use(authentication)
 router.post('/register', UserController.register)
+router.use(authentication)
 
 // Likes
 router.post('/devices/:id/likes', LikeController.increaseLike)
 router.delete('/devices/:id/likes', LikeController.decreaseLike)
 
 //Comments
+router.get('/devices/:id/comments', CommentController.readComment)
 router.post('/devices/:id/comments', CommentController.addComment)
-router.delete('/devices/:id/comments', CommentController.deleteComment)
-
+router.delete('/devices/:id/comments/:commentId', CommentController.deleteComment)
 
 
 // router.use(authentication)

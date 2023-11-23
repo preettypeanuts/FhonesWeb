@@ -1,6 +1,24 @@
-const { Comment } = require('../models')
+const { Comment, User } = require('../models')
 
 class CommentController {
+    static async readComment(req, res, next) {
+        try {
+            const { id } = req.params
+
+            const readComment = await Comment.findAll({
+                where: {
+                    deviceId: id,
+                }, include: {
+                    model: User
+                }
+            })
+
+            if (!readComment) throw { name: "CommentNotFound" }
+            res.status(200).json(readComment)
+        } catch (error) {
+            next(error)
+        }
+    }
     static async addComment(req, res, next) {
         try {
             const { comment } = req.body
@@ -13,21 +31,27 @@ class CommentController {
                 deviceId: id,
                 userId: userId
             })
+            if (!addComment) throw { name: "EmptyInput" }
+
             res.status(200).json(addComment)
         } catch (error) {
             next(error)
         }
     }
-
     static async deleteComment(req, res, next) {
         try {
             const { id } = req.params
-            await Comment.destroy({
+            const userId = req.user.id
+
+            const deleteComment = await Comment.destroy({
                 where: {
-                    deviceId: id
+                    deviceId: id,
+                    userId: userId
                 }
             })
-            res.status(200).json({ message: `comment deleted` })
+            if(!deleteComment) throw { name: "CommentNotFound"}
+
+            res.status(200).json({message: "Comment Deleted"})
         } catch (error) {
             next(error)
         }
