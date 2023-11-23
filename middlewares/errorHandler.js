@@ -15,8 +15,14 @@ const errorHandler = (error, req, res, next) => {
         case "InvalidInput":
             res.status(400).json({ message: `please fill email and password` })
             break;
+        case "EmptyInput":
+            res.status(400).json({ message: `Please write comment!` })
+            break;
+        case "CommentNotFound":
+            res.status(404).json({ message: `No available comment!` })
+            break;
         case "PostNotFound":
-            res.status(401).json({ message: `No matches post!` })
+            res.status(404).json({ message: `No matches post!` })
             break;
         case "Unauntenticated":
             res.status(401).json({ message: `email or password unregistered` })

@@ -12,6 +12,8 @@ class CommentController {
                     model: User
                 }
             })
+
+            if (!readComment) throw { name: "CommentNotFound" }
             res.status(200).json(readComment)
         } catch (error) {
             next(error)
@@ -29,6 +31,8 @@ class CommentController {
                 deviceId: id,
                 userId: userId
             })
+            if (!addComment) throw { name: "EmptyInput" }
+
             res.status(200).json(addComment)
         } catch (error) {
             next(error)
@@ -45,7 +49,9 @@ class CommentController {
                     userId: userId
                 }
             })
-            res.status(200).json(deleteComment)
+            if(!deleteComment) throw { name: "CommentNotFound"}
+
+            res.status(200).json({message: "Comment Deleted"})
         } catch (error) {
             next(error)
         }

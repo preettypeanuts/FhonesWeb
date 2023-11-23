@@ -6,10 +6,8 @@ const { User } = require('../models')
 class UserController {
     static async login(req, res, next) {
         try {
-            console.log('====================================');
-            console.log('error');
-            console.log('====================================');
             const { email, password } = req.body
+
             if (!email) throw { name: "InvalidInput", field: "email" }
 
             if (!password) throw { name: "InvalidInput", field: "password" }
@@ -23,9 +21,7 @@ class UserController {
             if (!compared) throw { name: "Unauntenticated" }
 
             const token = createToken({ id: user.id })
-            console.log('====================================');
-            console.log(token, "tokennya");
-            console.log('====================================');
+
             res.status(200).json({ message: `Succes login!`, token: `${token}` })
         } catch (error) {
             next(error)
@@ -34,16 +30,18 @@ class UserController {
     static async register(req, res, next) {
         try {
             const { username, email, password } = req.body
-            console.log('====================================');
-            console.log("masukk");
-            console.log('====================================');
 
             if (!username) throw { name: "InvalidInput", field: "username" }
+
             if (!email) throw { name: "InvalidInput", field: "email" }
+
             if (!password) throw { name: "InvalidInput", field: "password" }
 
             const user = await User.create({ username, email, role: "Client", password })
-            res.status(201).json({ message: `Created new user ${user.email}` })
+
+            const token = createToken({ id: user.id })
+
+            res.status(201).json({ message: `Created new user ${user.email}`, token: `${token}` })
         } catch (error) {
             next(error)
         }
