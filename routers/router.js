@@ -27,7 +27,6 @@ router.post('/auth/google/callback', GoogleController.login)
 
 //User endpoint
 router.post('/login', UserController.login)
-
 router.post('/register', UserController.register)
 router.use(authentication)
 
@@ -37,7 +36,7 @@ router.patch('/devices/:id/likes', LikeController.increaseLike)
 //Comments
 router.get('/devices/:id/comments', CommentController.readComment)
 router.post('/devices/:id/comments', CommentController.addComment)
-router.delete('/devices/:id/comments', CommentController.deleteComment)
+router.delete('/devices/:id/comments/:commentId', CommentController.deleteComment)
 
 
 // router.use(authentication)
