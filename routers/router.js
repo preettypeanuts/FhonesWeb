@@ -31,7 +31,8 @@ router.post('/register', UserController.register)
 router.use(authentication)
 
 // Likes
-router.patch('/devices/:id/likes', LikeController.increaseLike)
+router.post('/devices/:id/likes', LikeController.increaseLike)
+router.delete('/devices/:id/likes', LikeController.decreaseLike)
 
 //Comments
 router.get('/devices/:id/comments', CommentController.readComment)
